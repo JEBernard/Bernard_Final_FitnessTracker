@@ -28,6 +28,7 @@ Partial Class Profile
         Me.lblWeight = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -38,14 +39,13 @@ Partial Class Profile
         Me.lblGoal = New System.Windows.Forms.Label()
         Me.txtProgress = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 24)
+        Me.Label1.Location = New System.Drawing.Point(12, 45)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(35, 13)
         Me.Label1.TabIndex = 0
@@ -54,7 +54,7 @@ Partial Class Profile
         'txtName
         '
         Me.txtName.Enabled = False
-        Me.txtName.Location = New System.Drawing.Point(15, 51)
+        Me.txtName.Location = New System.Drawing.Point(15, 72)
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(114, 20)
         Me.txtName.TabIndex = 1
@@ -62,7 +62,7 @@ Partial Class Profile
         'lblHeight
         '
         Me.lblHeight.AutoSize = True
-        Me.lblHeight.Location = New System.Drawing.Point(12, 104)
+        Me.lblHeight.Location = New System.Drawing.Point(12, 125)
         Me.lblHeight.Name = "lblHeight"
         Me.lblHeight.Size = New System.Drawing.Size(38, 13)
         Me.lblHeight.TabIndex = 2
@@ -71,7 +71,7 @@ Partial Class Profile
         'lblWeight
         '
         Me.lblWeight.AutoSize = True
-        Me.lblWeight.Location = New System.Drawing.Point(12, 152)
+        Me.lblWeight.Location = New System.Drawing.Point(12, 173)
         Me.lblWeight.Name = "lblWeight"
         Me.lblWeight.Size = New System.Drawing.Size(41, 13)
         Me.lblWeight.TabIndex = 3
@@ -82,7 +82,7 @@ Partial Class Profile
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(396, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(424, 24)
         Me.MenuStrip1.TabIndex = 4
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -93,22 +93,28 @@ Partial Class Profile
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
         '
+        'ReportsToolStripMenuItem
+        '
+        Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
+        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(114, 22)
+        Me.ReportsToolStripMenuItem.Text = "Reports"
+        '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(114, 22)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(114, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(317, 24)
+        Me.Label4.Location = New System.Drawing.Point(317, 45)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(30, 13)
         Me.Label4.TabIndex = 5
@@ -117,7 +123,7 @@ Partial Class Profile
         'txtDate
         '
         Me.txtDate.Enabled = False
-        Me.txtDate.Location = New System.Drawing.Point(297, 51)
+        Me.txtDate.Location = New System.Drawing.Point(297, 72)
         Me.txtDate.Name = "txtDate"
         Me.txtDate.Size = New System.Drawing.Size(87, 20)
         Me.txtDate.TabIndex = 6
@@ -125,7 +131,7 @@ Partial Class Profile
         'txtHeight
         '
         Me.txtHeight.Enabled = False
-        Me.txtHeight.Location = New System.Drawing.Point(78, 104)
+        Me.txtHeight.Location = New System.Drawing.Point(78, 125)
         Me.txtHeight.Name = "txtHeight"
         Me.txtHeight.Size = New System.Drawing.Size(100, 20)
         Me.txtHeight.TabIndex = 7
@@ -133,7 +139,7 @@ Partial Class Profile
         'txtWeight
         '
         Me.txtWeight.Enabled = False
-        Me.txtWeight.Location = New System.Drawing.Point(78, 149)
+        Me.txtWeight.Location = New System.Drawing.Point(78, 170)
         Me.txtWeight.Name = "txtWeight"
         Me.txtWeight.Size = New System.Drawing.Size(100, 20)
         Me.txtWeight.TabIndex = 8
@@ -141,7 +147,7 @@ Partial Class Profile
         'txtGoal
         '
         Me.txtGoal.Enabled = False
-        Me.txtGoal.Location = New System.Drawing.Point(288, 104)
+        Me.txtGoal.Location = New System.Drawing.Point(288, 125)
         Me.txtGoal.Name = "txtGoal"
         Me.txtGoal.Size = New System.Drawing.Size(100, 20)
         Me.txtGoal.TabIndex = 10
@@ -149,7 +155,7 @@ Partial Class Profile
         'lblGoal
         '
         Me.lblGoal.AutoSize = True
-        Me.lblGoal.Location = New System.Drawing.Point(204, 104)
+        Me.lblGoal.Location = New System.Drawing.Point(204, 125)
         Me.lblGoal.Name = "lblGoal"
         Me.lblGoal.Size = New System.Drawing.Size(66, 13)
         Me.lblGoal.TabIndex = 9
@@ -157,7 +163,7 @@ Partial Class Profile
         '
         'txtProgress
         '
-        Me.txtProgress.Location = New System.Drawing.Point(288, 152)
+        Me.txtProgress.Location = New System.Drawing.Point(288, 173)
         Me.txtProgress.Name = "txtProgress"
         Me.txtProgress.Size = New System.Drawing.Size(100, 20)
         Me.txtProgress.TabIndex = 12
@@ -166,23 +172,17 @@ Partial Class Profile
         '
         Me.Label6.AutoSize = True
         Me.Label6.Enabled = False
-        Me.Label6.Location = New System.Drawing.Point(204, 155)
+        Me.Label6.Location = New System.Drawing.Point(204, 176)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(48, 13)
         Me.Label6.TabIndex = 11
         Me.Label6.Text = "Progress"
         '
-        'ReportsToolStripMenuItem
-        '
-        Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
-        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.ReportsToolStripMenuItem.Text = "Reports"
-        '
         'Profile
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(396, 289)
+        Me.ClientSize = New System.Drawing.Size(424, 287)
         Me.Controls.Add(Me.txtProgress)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.txtGoal)
