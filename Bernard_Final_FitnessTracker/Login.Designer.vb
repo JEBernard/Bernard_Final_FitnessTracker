@@ -24,17 +24,17 @@ Partial Class frmLogin
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.Login = New System.Windows.Forms.TabPage()
-        Me.Register = New System.Windows.Forms.TabPage()
-        Me.btnLogin = New System.Windows.Forms.Button()
-        Me.btnRegister = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtRegUsername = New System.Windows.Forms.TextBox()
-        Me.txtRegPassword = New System.Windows.Forms.TextBox()
         Me.txtLoginPassword = New System.Windows.Forms.TextBox()
         Me.txtLoginUsername = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.btnLogin = New System.Windows.Forms.Button()
+        Me.Register = New System.Windows.Forms.TabPage()
+        Me.txtRegPassword = New System.Windows.Forms.TextBox()
+        Me.txtRegUsername = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnRegister = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.Login.SuspendLayout()
         Me.Register.SuspendLayout()
@@ -65,71 +65,6 @@ Partial Class frmLogin
         Me.Login.TabIndex = 0
         Me.Login.Text = "Login"
         Me.Login.UseVisualStyleBackColor = True
-        '
-        'Register
-        '
-        Me.Register.Controls.Add(Me.txtRegPassword)
-        Me.Register.Controls.Add(Me.txtRegUsername)
-        Me.Register.Controls.Add(Me.Label2)
-        Me.Register.Controls.Add(Me.Label1)
-        Me.Register.Controls.Add(Me.btnRegister)
-        Me.Register.Location = New System.Drawing.Point(4, 22)
-        Me.Register.Name = "Register"
-        Me.Register.Padding = New System.Windows.Forms.Padding(3)
-        Me.Register.Size = New System.Drawing.Size(413, 251)
-        Me.Register.TabIndex = 1
-        Me.Register.Text = "Register"
-        Me.Register.UseVisualStyleBackColor = True
-        '
-        'btnLogin
-        '
-        Me.btnLogin.Location = New System.Drawing.Point(284, 203)
-        Me.btnLogin.Name = "btnLogin"
-        Me.btnLogin.Size = New System.Drawing.Size(103, 25)
-        Me.btnLogin.TabIndex = 0
-        Me.btnLogin.Text = "Login"
-        Me.btnLogin.UseVisualStyleBackColor = True
-        '
-        'btnRegister
-        '
-        Me.btnRegister.Location = New System.Drawing.Point(294, 204)
-        Me.btnRegister.Name = "btnRegister"
-        Me.btnRegister.Size = New System.Drawing.Size(103, 25)
-        Me.btnRegister.TabIndex = 1
-        Me.btnRegister.Text = "Register"
-        Me.btnRegister.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(26, 47)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(58, 13)
-        Me.Label1.TabIndex = 2
-        Me.Label1.Text = "Username:"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(26, 94)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(56, 13)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Password:"
-        '
-        'txtRegUsername
-        '
-        Me.txtRegUsername.Location = New System.Drawing.Point(106, 45)
-        Me.txtRegUsername.Name = "txtRegUsername"
-        Me.txtRegUsername.Size = New System.Drawing.Size(188, 20)
-        Me.txtRegUsername.TabIndex = 4
-        '
-        'txtRegPassword
-        '
-        Me.txtRegPassword.Location = New System.Drawing.Point(106, 91)
-        Me.txtRegPassword.Name = "txtRegPassword"
-        Me.txtRegPassword.Size = New System.Drawing.Size(188, 20)
-        Me.txtRegPassword.TabIndex = 5
         '
         'txtLoginPassword
         '
@@ -162,6 +97,71 @@ Partial Class frmLogin
         Me.Label4.Size = New System.Drawing.Size(58, 13)
         Me.Label4.TabIndex = 6
         Me.Label4.Text = "Username:"
+        '
+        'btnLogin
+        '
+        Me.btnLogin.Location = New System.Drawing.Point(284, 203)
+        Me.btnLogin.Name = "btnLogin"
+        Me.btnLogin.Size = New System.Drawing.Size(103, 25)
+        Me.btnLogin.TabIndex = 0
+        Me.btnLogin.Text = "Login"
+        Me.btnLogin.UseVisualStyleBackColor = True
+        '
+        'Register
+        '
+        Me.Register.Controls.Add(Me.txtRegPassword)
+        Me.Register.Controls.Add(Me.txtRegUsername)
+        Me.Register.Controls.Add(Me.Label2)
+        Me.Register.Controls.Add(Me.Label1)
+        Me.Register.Controls.Add(Me.btnRegister)
+        Me.Register.Location = New System.Drawing.Point(4, 22)
+        Me.Register.Name = "Register"
+        Me.Register.Padding = New System.Windows.Forms.Padding(3)
+        Me.Register.Size = New System.Drawing.Size(413, 251)
+        Me.Register.TabIndex = 1
+        Me.Register.Text = "Register"
+        Me.Register.UseVisualStyleBackColor = True
+        '
+        'txtRegPassword
+        '
+        Me.txtRegPassword.Location = New System.Drawing.Point(106, 91)
+        Me.txtRegPassword.Name = "txtRegPassword"
+        Me.txtRegPassword.Size = New System.Drawing.Size(188, 20)
+        Me.txtRegPassword.TabIndex = 5
+        '
+        'txtRegUsername
+        '
+        Me.txtRegUsername.Location = New System.Drawing.Point(106, 45)
+        Me.txtRegUsername.Name = "txtRegUsername"
+        Me.txtRegUsername.Size = New System.Drawing.Size(188, 20)
+        Me.txtRegUsername.TabIndex = 4
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(26, 94)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(56, 13)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Password:"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(26, 47)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(58, 13)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "Username:"
+        '
+        'btnRegister
+        '
+        Me.btnRegister.Location = New System.Drawing.Point(294, 204)
+        Me.btnRegister.Name = "btnRegister"
+        Me.btnRegister.Size = New System.Drawing.Size(103, 25)
+        Me.btnRegister.TabIndex = 1
+        Me.btnRegister.Text = "Register"
+        Me.btnRegister.UseVisualStyleBackColor = True
         '
         'frmLogin
         '
