@@ -1,4 +1,4 @@
 ﻿Public Class frmLogin
-    'Login and Register tabs
+    'Login and Register tabs 
 
 End Class
