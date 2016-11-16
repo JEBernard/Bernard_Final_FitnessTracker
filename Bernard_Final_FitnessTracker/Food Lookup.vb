@@ -46,10 +46,10 @@ Public Class Food_Lookup
 
         For Each result In response.Results
 
-            listResults.Add(result.Item.BrandName & result.Item.Name)
+            'listResults.Add(result.Item.BrandName & result.Item.Name)
             lstResults.DisplayMember = result.Item.BrandName & result.Item.Name
-            lstResults.ValueMember = result.Item.Id
             lstResults.DataSource = listResults
+
 
         Next
 

@@ -59,7 +59,6 @@ Partial Class Food_Lookup
         '
         'lstResults
         '
-        Me.lstResults.DisplayMember = "result.Item.Name"
         Me.lstResults.FormattingEnabled = True
         Me.lstResults.Location = New System.Drawing.Point(53, 137)
         Me.lstResults.Name = "lstResults"
