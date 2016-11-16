@@ -1,5 +1,5 @@
 ﻿Public Class frmLogin
-    'Login and Register tabs   
+    'Login and Register tabs
     Dim users As New Dictionary(Of String, String)
 
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -21,7 +21,6 @@
     End Sub
 
     Private Sub btnRegister_Click(sender As Object, e As EventArgs) Handles btnRegister.Click
-
 
         Dim password As String = txtRegPassword.Text
         If (users.TryGetValue(txtRegUsername.Text, txtRegPassword.Text)) Then

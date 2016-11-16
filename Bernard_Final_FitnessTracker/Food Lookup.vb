@@ -2,7 +2,6 @@
 Imports System.Configuration
 Imports Nutritionix
 
-
 Public Class Food_Lookup
 
     Public SearchFood As String
@@ -12,13 +11,7 @@ Public Class Food_Lookup
     Dim result As New SearchResult
     Dim listResults As New List(Of String)
 
-
-
-
-
     Private Sub Food_Lookup_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
 
     End Sub
 
@@ -49,7 +42,6 @@ Public Class Food_Lookup
             'listResults.Add(result.Item.BrandName & result.Item.Name)
             lstResults.DisplayMember = result.Item.BrandName & result.Item.Name
             lstResults.DataSource = listResults
-
 
         Next
 
