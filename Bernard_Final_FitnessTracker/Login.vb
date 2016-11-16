@@ -13,7 +13,8 @@
             MessageBox.Show("Login successful")
 
             'Launch Profile form
-
+            Profile.ShowDialog()
+            Me.Close()
         Else
             MessageBox.Show("Invalid Username/Password")
         End If

@@ -39,6 +39,7 @@ Partial Class Profile
         Me.lblGoal = New System.Windows.Forms.Label()
         Me.txtProgress = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.DiaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -88,7 +89,7 @@ Partial Class Profile
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReportsToolStripMenuItem, Me.HelpToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DiaryToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.HelpToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
@@ -96,19 +97,19 @@ Partial Class Profile
         'ReportsToolStripMenuItem
         '
         Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
-        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(114, 22)
+        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ReportsToolStripMenuItem.Text = "Reports"
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(114, 22)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(114, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'Label4
@@ -178,6 +179,12 @@ Partial Class Profile
         Me.Label6.TabIndex = 11
         Me.Label6.Text = "Progress"
         '
+        'DiaryToolStripMenuItem
+        '
+        Me.DiaryToolStripMenuItem.Name = "DiaryToolStripMenuItem"
+        Me.DiaryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DiaryToolStripMenuItem.Text = "Diary"
+        '
         'Profile
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -223,4 +230,5 @@ Partial Class Profile
     Friend WithEvents txtProgress As TextBox
     Friend WithEvents Label6 As Label
     Friend WithEvents ReportsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents DiaryToolStripMenuItem As ToolStripMenuItem
 End Class
