@@ -1,5 +1,5 @@
 ﻿Public Class frmLogin
-    'Login and Register tabs
+    'Login and Register form
     Dim users As New Dictionary(Of String, String)
 
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
