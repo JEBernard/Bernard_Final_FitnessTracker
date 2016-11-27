@@ -140,6 +140,11 @@
     <Compile Include="Profile.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SearchResults.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SearchResults.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UsersDataSet1.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -178,6 +183,17 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="SearchResults.xsc">
+      <DependentUpon>SearchResults.xsd</DependentUpon>
+    </None>
+    <None Include="SearchResults.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SearchResults.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SearchResults.xss">
+      <DependentUpon>SearchResults.xsd</DependentUpon>
+    </None>
     <None Include="UsersDataSet.xsc">
       <DependentUpon>UsersDataSet.xsd</DependentUpon>
     </None>
@@ -191,6 +207,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\attribution_jqfdgy.png" />
     <Content Include="Users.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -210,6 +227,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

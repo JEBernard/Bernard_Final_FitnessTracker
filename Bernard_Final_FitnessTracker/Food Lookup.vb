@@ -1,8 +1,9 @@
 ﻿Imports System
 Imports System.Configuration
 Imports Nutritionix
+Imports System.Collections.Specialized
 
-Public Class Food_Lookup
+Public Class frmFoodLookup
 
     Public SearchFood As String
     Dim Nutritionix As New NutritionixClient()
@@ -10,53 +11,56 @@ Public Class Food_Lookup
     Dim response As SearchResponse
     Dim result As New SearchResult
     Dim listResults As New List(Of String)
+    Dim appId As String = ConfigurationManager.AppSettings.Get("appid")
+    Dim appKey As String = ConfigurationManager.AppSettings.Get("appkey")
+    Dim searchResultsTableAdapter As New SearchResultsTableAdapters.SearchResults1TableAdapter
 
     Private Sub Food_Lookup_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        'TODO: This line of code loads data into the 'SearchResults.SearchResults1' table. You can move, or remove it, as needed.
+        Me.SearchResults1TableAdapter.FillTable(Me.SearchResults.SearchResults1)
+        'TODO: This line of code loads data into the 'SearchResults._SearchResults' table. You can move, or remove it, as needed.
+        Me.SearchResultsTableAdapter1.Fill(Me.SearchResults._SearchResults)
+        lblName.Text = frmLogin.Username
     End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
 
         SearchFood = txtSearch.Text
 
-        'Dim Nutritionix = New NutritionixClient()
-
-        Dim appId = "8e960d18"
-        Dim appKey = "3e2a36b455b6c25cad2c6c4bd888ac63"
-
         Nutritionix.Initialize(appId, appKey)
 
-        'Dim request = New SearchRequest
         request.Query = SearchFood
 
         ToolStripStatusLabel1.Text = "Searching Nutritionix for " & SearchFood & "..."
 
         response = Nutritionix.SearchItems(request)
 
-        Console.WriteLine("Displaying results 1 - {0} of {1}", response.Results.Length, response.TotalResults)
-
-        'Dim result As New SearchResult
-
         For Each result In response.Results
-
-            'listResults.Add(result.Item.BrandName & result.Item.Name)
-            lstResults.DisplayMember = result.Item.BrandName & result.Item.Name
-            lstResults.DataSource = listResults
-
+            searchResultsTableAdapter.addResults(result.Item.BrandName, result.Item.Name, result.Item.Id, result.Item.NutritionFact_Calories)
         Next
+        ToolStripStatusLabel1.Text = ""
+        searchResultsTableAdapter.FillTable(SearchResults.SearchResults1)
+
 
     End Sub
 
-    Private Sub btnInformation_Click(sender As Object, e As EventArgs) Handles btnInformation.Click
-        Try
+    Private Sub btnInformation_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
 
-            ToolStripStatusLabel1.Text = lstResults.SelectedValue
-        Catch
-
-        End Try
     End Sub
 
-    Private Sub lstResults_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstResults.SelectedIndexChanged
+    Private Sub lstResults_SelectedIndexChanged(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        Me.Close()
+    End Sub
+
+    Private Sub pbAttrib_Click(sender As Object, e As EventArgs) Handles pbAttrib.Click
+        Process.Start("http://www.nutritionix.com/api")
+    End Sub
+
+    Private Sub pbAttrib_MouseHover(sender As Object, e As EventArgs) Handles pbAttrib.MouseHover
+        Cursor.Current = Cursors.Hand
     End Sub
 End Class

@@ -45,6 +45,8 @@ Partial Class frmProfile
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.btnRefresh = New System.Windows.Forms.Button()
+        Me.AddFoodToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewDiaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -102,8 +104,9 @@ Partial Class frmProfile
         '
         'DiaryToolStripMenuItem
         '
+        Me.DiaryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddFoodToolStripMenuItem, Me.ViewDiaryToolStripMenuItem})
         Me.DiaryToolStripMenuItem.Name = "DiaryToolStripMenuItem"
-        Me.DiaryToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.DiaryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.DiaryToolStripMenuItem.Text = "Diary"
         '
         'EditProfileToolStripMenuItem
@@ -230,6 +233,18 @@ Partial Class frmProfile
         Me.btnRefresh.Text = "Refresh"
         Me.btnRefresh.UseVisualStyleBackColor = True
         '
+        'AddFoodToolStripMenuItem
+        '
+        Me.AddFoodToolStripMenuItem.Name = "AddFoodToolStripMenuItem"
+        Me.AddFoodToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AddFoodToolStripMenuItem.Text = "Add Food"
+        '
+        'ViewDiaryToolStripMenuItem
+        '
+        Me.ViewDiaryToolStripMenuItem.Name = "ViewDiaryToolStripMenuItem"
+        Me.ViewDiaryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ViewDiaryToolStripMenuItem.Text = "View Diary"
+        '
         'frmProfile
         '
         Me.AcceptButton = Me.btnSave
@@ -288,4 +303,6 @@ Partial Class frmProfile
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
     Friend WithEvents btnRefresh As Button
+    Friend WithEvents AddFoodToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ViewDiaryToolStripMenuItem As ToolStripMenuItem
 End Class

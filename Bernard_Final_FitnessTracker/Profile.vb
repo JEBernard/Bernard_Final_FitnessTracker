@@ -5,7 +5,7 @@ Public Class frmProfile
     Dim myConn As New SqlConnection(connection)
 
     Private Sub DiaryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DiaryToolStripMenuItem.Click
-        Food_Lookup.ShowDialog()
+        frmFoodLookup.ShowDialog()
     End Sub
 
     Private Sub frmProfile_Load(sender As Object, e As EventArgs) Handles MyBase.Load
