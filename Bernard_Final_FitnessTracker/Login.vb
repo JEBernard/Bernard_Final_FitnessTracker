@@ -30,5 +30,8 @@
             MessageBox.Show("User has been registered successfully")
         End If
 
+
+
+
     End Sub
 End Class
