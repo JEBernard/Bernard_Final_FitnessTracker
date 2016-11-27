@@ -170,6 +170,7 @@ Partial Class frmLogin
         Me.ClientSize = New System.Drawing.Size(468, 323)
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "frmLogin"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Fitness Tracker"
         Me.TabControl1.ResumeLayout(False)
         Me.Login.ResumeLayout(False)

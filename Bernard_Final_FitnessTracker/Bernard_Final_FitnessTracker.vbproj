@@ -100,6 +100,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditProfile.Designer.vb">
+      <DependentUpon>EditProfile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EditProfile.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Food Lookup.Designer.vb">
       <DependentUpon>Food Lookup.vb</DependentUpon>
     </Compile>
@@ -141,6 +147,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="EditProfile.resx">
+      <DependentUpon>EditProfile.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Food Lookup.resx">
       <DependentUpon>Food Lookup.vb</DependentUpon>
     </EmbeddedResource>

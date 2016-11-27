@@ -8,6 +8,7 @@ Public Class frmLogin
 
     Dim myConn As New SqlConnection(connection)
 
+    Public Shared Username As String
     Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
@@ -34,8 +35,11 @@ WHERE UserName = @UserName AND  Password = @Password"
             count = comm.ExecuteScalar()
 
             If count > 0 Then
-                MessageBox.Show("Login successfull")
+
+                Username = strName
                 myConn.Close()
+                frmProfile.ShowDialog()
+                Me.Close()
             Else
                 MessageBox.Show("Invalid Username/Password")
                 myConn.Close()
