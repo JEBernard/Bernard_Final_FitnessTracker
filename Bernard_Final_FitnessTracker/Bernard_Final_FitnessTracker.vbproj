@@ -140,10 +140,10 @@
     <Compile Include="Profile.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SearchResults.Designer.vb">
+    <Compile Include="Results.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SearchResults.xsd</DependentUpon>
+      <DependentUpon>Results.xsd</DependentUpon>
     </Compile>
     <Compile Include="UsersDataSet1.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -183,16 +183,16 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="packages.config" />
-    <None Include="SearchResults.xsc">
-      <DependentUpon>SearchResults.xsd</DependentUpon>
+    <None Include="Results.xsc">
+      <DependentUpon>Results.xsd</DependentUpon>
     </None>
-    <None Include="SearchResults.xsd">
+    <None Include="Results.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SearchResults.Designer.vb</LastGenOutput>
+      <LastGenOutput>Results.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="SearchResults.xss">
-      <DependentUpon>SearchResults.xsd</DependentUpon>
+    <None Include="Results.xss">
+      <DependentUpon>Results.xsd</DependentUpon>
     </None>
     <None Include="UsersDataSet.xsc">
       <DependentUpon>UsersDataSet.xsd</DependentUpon>

@@ -32,15 +32,8 @@ Partial Class frmFoodLookup
         Me.pbAttrib = New System.Windows.Forms.PictureBox()
         Me.lblName = New System.Windows.Forms.Label()
         Me.dgvResults = New System.Windows.Forms.DataGridView()
-        Me.BrandNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ItemNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ItemIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CaloriesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SearchResults1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SearchResults = New Bernard_Final_FitnessTracker.SearchResults()
         Me.SearchResultsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SearchResultsTableAdapter1 = New Bernard_Final_FitnessTracker.SearchResultsTableAdapters.SearchResultsTableAdapter()
-        Me.SearchResults1TableAdapter = New Bernard_Final_FitnessTracker.SearchResultsTableAdapters.SearchResults1TableAdapter()
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.RadioButton3 = New System.Windows.Forms.RadioButton()
@@ -49,14 +42,25 @@ Partial Class frmFoodLookup
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BrandNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemId1DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Results = New Bernard_Final_FitnessTracker.Results()
+        Me.SearchResultsBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SearchResultsTableAdapter2 = New Bernard_Final_FitnessTracker.ResultsTableAdapters.SearchResultsTableAdapter()
+        Me.BrandNameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemNameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CaloriesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.pbAttrib, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvResults, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SearchResults1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SearchResults, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SearchResultsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbMeal.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
+        CType(Me.Results, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SearchResultsBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnSearch
@@ -127,61 +131,17 @@ Partial Class frmFoodLookup
         '
         'dgvResults
         '
+        Me.dgvResults.AllowUserToAddRows = False
+        Me.dgvResults.AllowUserToDeleteRows = False
         Me.dgvResults.AutoGenerateColumns = False
         Me.dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvResults.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.BrandNameDataGridViewTextBoxColumn, Me.ItemNameDataGridViewTextBoxColumn, Me.ItemIdDataGridViewTextBoxColumn, Me.CaloriesDataGridViewTextBoxColumn})
-        Me.dgvResults.DataSource = Me.SearchResults1BindingSource
+        Me.dgvResults.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.BrandNameDataGridViewTextBoxColumn1, Me.ItemNameDataGridViewTextBoxColumn1, Me.ItemIdDataGridViewTextBoxColumn, Me.CaloriesDataGridViewTextBoxColumn})
+        Me.dgvResults.DataSource = Me.SearchResultsBindingSource1
         Me.dgvResults.Location = New System.Drawing.Point(56, 96)
         Me.dgvResults.Name = "dgvResults"
+        Me.dgvResults.ReadOnly = True
         Me.dgvResults.Size = New System.Drawing.Size(445, 107)
         Me.dgvResults.TabIndex = 8
-        '
-        'BrandNameDataGridViewTextBoxColumn
-        '
-        Me.BrandNameDataGridViewTextBoxColumn.DataPropertyName = "brand name"
-        Me.BrandNameDataGridViewTextBoxColumn.HeaderText = "brand name"
-        Me.BrandNameDataGridViewTextBoxColumn.Name = "BrandNameDataGridViewTextBoxColumn"
-        '
-        'ItemNameDataGridViewTextBoxColumn
-        '
-        Me.ItemNameDataGridViewTextBoxColumn.DataPropertyName = "item name"
-        Me.ItemNameDataGridViewTextBoxColumn.HeaderText = "item name"
-        Me.ItemNameDataGridViewTextBoxColumn.Name = "ItemNameDataGridViewTextBoxColumn"
-        '
-        'ItemIdDataGridViewTextBoxColumn
-        '
-        Me.ItemIdDataGridViewTextBoxColumn.DataPropertyName = "item id"
-        Me.ItemIdDataGridViewTextBoxColumn.HeaderText = "item id"
-        Me.ItemIdDataGridViewTextBoxColumn.Name = "ItemIdDataGridViewTextBoxColumn"
-        '
-        'CaloriesDataGridViewTextBoxColumn
-        '
-        Me.CaloriesDataGridViewTextBoxColumn.DataPropertyName = "calories"
-        Me.CaloriesDataGridViewTextBoxColumn.HeaderText = "calories"
-        Me.CaloriesDataGridViewTextBoxColumn.Name = "CaloriesDataGridViewTextBoxColumn"
-        '
-        'SearchResults1BindingSource
-        '
-        Me.SearchResults1BindingSource.DataMember = "SearchResults1"
-        Me.SearchResults1BindingSource.DataSource = Me.SearchResults
-        '
-        'SearchResults
-        '
-        Me.SearchResults.DataSetName = "SearchResults"
-        Me.SearchResults.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'SearchResultsBindingSource
-        '
-        Me.SearchResultsBindingSource.DataMember = "SearchResults"
-        Me.SearchResultsBindingSource.DataSource = Me.SearchResults
-        '
-        'SearchResultsTableAdapter1
-        '
-        Me.SearchResultsTableAdapter1.ClearBeforeFill = True
-        '
-        'SearchResults1TableAdapter
-        '
-        Me.SearchResults1TableAdapter.ClearBeforeFill = True
         '
         'RadioButton1
         '
@@ -259,8 +219,68 @@ Partial Class frmFoodLookup
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(92, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
+        '
+        'BrandNameDataGridViewTextBoxColumn
+        '
+        Me.BrandNameDataGridViewTextBoxColumn.DataPropertyName = "Brand Name"
+        Me.BrandNameDataGridViewTextBoxColumn.HeaderText = "Brand Name"
+        Me.BrandNameDataGridViewTextBoxColumn.Name = "BrandNameDataGridViewTextBoxColumn"
+        '
+        'ItemNameDataGridViewTextBoxColumn
+        '
+        Me.ItemNameDataGridViewTextBoxColumn.DataPropertyName = "Item Name"
+        Me.ItemNameDataGridViewTextBoxColumn.HeaderText = "Item Name"
+        Me.ItemNameDataGridViewTextBoxColumn.Name = "ItemNameDataGridViewTextBoxColumn"
+        '
+        'ItemId1DataGridViewTextBoxColumn
+        '
+        Me.ItemId1DataGridViewTextBoxColumn.DataPropertyName = "item id1"
+        Me.ItemId1DataGridViewTextBoxColumn.HeaderText = "item id1"
+        Me.ItemId1DataGridViewTextBoxColumn.Name = "ItemId1DataGridViewTextBoxColumn"
+        '
+        'Results
+        '
+        Me.Results.DataSetName = "Results"
+        Me.Results.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'SearchResultsBindingSource1
+        '
+        Me.SearchResultsBindingSource1.DataMember = "SearchResults"
+        Me.SearchResultsBindingSource1.DataSource = Me.Results
+        '
+        'SearchResultsTableAdapter2
+        '
+        Me.SearchResultsTableAdapter2.ClearBeforeFill = True
+        '
+        'BrandNameDataGridViewTextBoxColumn1
+        '
+        Me.BrandNameDataGridViewTextBoxColumn1.DataPropertyName = "brand name"
+        Me.BrandNameDataGridViewTextBoxColumn1.HeaderText = "brand name"
+        Me.BrandNameDataGridViewTextBoxColumn1.Name = "BrandNameDataGridViewTextBoxColumn1"
+        Me.BrandNameDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'ItemNameDataGridViewTextBoxColumn1
+        '
+        Me.ItemNameDataGridViewTextBoxColumn1.DataPropertyName = "item name"
+        Me.ItemNameDataGridViewTextBoxColumn1.HeaderText = "item name"
+        Me.ItemNameDataGridViewTextBoxColumn1.Name = "ItemNameDataGridViewTextBoxColumn1"
+        Me.ItemNameDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'ItemIdDataGridViewTextBoxColumn
+        '
+        Me.ItemIdDataGridViewTextBoxColumn.DataPropertyName = "item id"
+        Me.ItemIdDataGridViewTextBoxColumn.HeaderText = "item id"
+        Me.ItemIdDataGridViewTextBoxColumn.Name = "ItemIdDataGridViewTextBoxColumn"
+        Me.ItemIdDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CaloriesDataGridViewTextBoxColumn
+        '
+        Me.CaloriesDataGridViewTextBoxColumn.DataPropertyName = "calories"
+        Me.CaloriesDataGridViewTextBoxColumn.HeaderText = "calories"
+        Me.CaloriesDataGridViewTextBoxColumn.Name = "CaloriesDataGridViewTextBoxColumn"
+        Me.CaloriesDataGridViewTextBoxColumn.ReadOnly = True
         '
         'frmFoodLookup
         '
@@ -288,12 +308,13 @@ Partial Class frmFoodLookup
         CType(Me.pbAttrib, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvResults, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SearchResults1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SearchResults, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SearchResultsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbMeal.ResumeLayout(False)
         Me.gbMeal.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        CType(Me.Results, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SearchResultsBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -308,15 +329,8 @@ Partial Class frmFoodLookup
     Friend WithEvents pbAttrib As PictureBox
     Friend WithEvents lblName As Label
     Friend WithEvents dgvResults As DataGridView
-    Friend WithEvents SearchResults As SearchResults
     Friend WithEvents SearchResultsBindingSource As BindingSource
-    Friend WithEvents SearchResultsTableAdapter1 As SearchResultsTableAdapters.SearchResultsTableAdapter
-    Friend WithEvents BrandNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ItemNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ItemIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CaloriesDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SearchResults1BindingSource As BindingSource
-    Friend WithEvents SearchResults1TableAdapter As SearchResultsTableAdapters.SearchResults1TableAdapter
     Friend WithEvents RadioButton1 As RadioButton
     Friend WithEvents RadioButton2 As RadioButton
     Friend WithEvents RadioButton3 As RadioButton
@@ -325,4 +339,14 @@ Partial Class frmFoodLookup
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BrandNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ItemNameDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ItemId1DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Results As Results
+    Friend WithEvents SearchResultsBindingSource1 As BindingSource
+    Friend WithEvents SearchResultsTableAdapter2 As ResultsTableAdapters.SearchResultsTableAdapter
+    Friend WithEvents BrandNameDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents ItemNameDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents ItemIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CaloriesDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class
