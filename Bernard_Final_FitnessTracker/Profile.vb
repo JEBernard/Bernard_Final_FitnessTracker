@@ -4,10 +4,6 @@ Public Class frmProfile
 
     Dim myConn As New SqlConnection(connection)
 
-    Private Sub DiaryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DiaryToolStripMenuItem.Click
-        frmFoodLookup.ShowDialog()
-    End Sub
-
     Private Sub frmProfile_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ReadData()
     End Sub
@@ -54,5 +50,9 @@ WHERE UserName = @UserName"
 
     Private Sub btnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
         ReadData()
+    End Sub
+
+    Private Sub AddFoodToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddFoodToolStripMenuItem.Click
+        frmFoodLookup.ShowDialog()
     End Sub
 End Class

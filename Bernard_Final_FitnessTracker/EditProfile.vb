@@ -4,9 +4,9 @@ Public Class frmEdit
 
     Dim myConn As New SqlConnection(connection)
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        'TODO: add form closing event 
+        'TODO: add form closing event
 
-        'Check if unsaved data exists in textboxes and ask to save before closing 
+        'Check if unsaved data exists in textboxes and ask to save before closing
 
         Me.Close()
 
@@ -16,7 +16,7 @@ Public Class frmEdit
 
         Dim comm As New SqlCommand
         Dim query As String =
-            " Update [dbo].[Users] Set  [Height] = @Height, [Weight] = @Weight, [Goal Weight] = @Goal_Weight WHERE    
+            " Update [dbo].[Users] Set  [Height] = @Height, [Weight] = @Weight, [Goal Weight] = @Goal_Weight WHERE
 [UserName] = @Username"
         With comm
             .Connection = myConn

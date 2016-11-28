@@ -29,6 +29,8 @@ Partial Class frmProfile
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DiaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AddFoodToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewDiaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditProfileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -45,8 +47,6 @@ Partial Class frmProfile
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.btnRefresh = New System.Windows.Forms.Button()
-        Me.AddFoodToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ViewDiaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -109,28 +109,40 @@ Partial Class frmProfile
         Me.DiaryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.DiaryToolStripMenuItem.Text = "Diary"
         '
+        'AddFoodToolStripMenuItem
+        '
+        Me.AddFoodToolStripMenuItem.Name = "AddFoodToolStripMenuItem"
+        Me.AddFoodToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AddFoodToolStripMenuItem.Text = "Add Food"
+        '
+        'ViewDiaryToolStripMenuItem
+        '
+        Me.ViewDiaryToolStripMenuItem.Name = "ViewDiaryToolStripMenuItem"
+        Me.ViewDiaryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ViewDiaryToolStripMenuItem.Text = "View Diary"
+        '
         'EditProfileToolStripMenuItem
         '
         Me.EditProfileToolStripMenuItem.Name = "EditProfileToolStripMenuItem"
-        Me.EditProfileToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.EditProfileToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.EditProfileToolStripMenuItem.Text = "Edit Profile"
         '
         'ReportsToolStripMenuItem
         '
         Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
-        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ReportsToolStripMenuItem.Text = "Reports"
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'lblDate
@@ -232,18 +244,6 @@ Partial Class frmProfile
         Me.btnRefresh.TabIndex = 15
         Me.btnRefresh.Text = "Refresh"
         Me.btnRefresh.UseVisualStyleBackColor = True
-        '
-        'AddFoodToolStripMenuItem
-        '
-        Me.AddFoodToolStripMenuItem.Name = "AddFoodToolStripMenuItem"
-        Me.AddFoodToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.AddFoodToolStripMenuItem.Text = "Add Food"
-        '
-        'ViewDiaryToolStripMenuItem
-        '
-        Me.ViewDiaryToolStripMenuItem.Name = "ViewDiaryToolStripMenuItem"
-        Me.ViewDiaryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.ViewDiaryToolStripMenuItem.Text = "View Diary"
         '
         'frmProfile
         '

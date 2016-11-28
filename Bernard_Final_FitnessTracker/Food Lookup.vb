@@ -35,7 +35,6 @@ Public Class frmFoodLookup
 
         response = Nutritionix.SearchItems(request)
 
-
         For Each result In response.Results
             resultsTableAdapter.addResults(result.Item.BrandName, result.Item.Name, result.Item.Id, result.Item.NutritionFact_Calories)
             Dim item As New Item
@@ -46,14 +45,6 @@ Public Class frmFoodLookup
         ToolStripStatusLabel1.Text = ""
         resultsTableAdapter.ClearBeforeFill = True
         resultsTableAdapter.Fill(Results.SearchResults)
-
-    End Sub
-
-    Private Sub btnInformation_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-
-    End Sub
-
-    Private Sub lstResults_SelectedIndexChanged(sender As Object, e As EventArgs)
 
     End Sub
 
