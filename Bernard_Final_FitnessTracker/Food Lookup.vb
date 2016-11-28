@@ -9,18 +9,17 @@ Public Class frmFoodLookup
     Dim Nutritionix As New NutritionixClient()
     Dim request = New SearchRequest
     Dim response As SearchResponse
+    Dim calResponse As SearchResponse
+    Dim calRequest As SearchRequest
+    Dim calResult As New SearchResult
     Dim result As New SearchResult
     Dim appId As String = ConfigurationManager.AppSettings.Get("appid")
     Dim appKey As String = ConfigurationManager.AppSettings.Get("appkey")
     Dim resultsTableAdapter As New ResultsTableAdapters.SearchResultsTableAdapter
 
     Private Sub Food_Lookup_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ''TODO: This line of code loads data into the 'Results.SearchResults' table. You can move, or remove it, as needed.
-        'Me.SearchResultsTableAdapter2.Fill(Me.Results.SearchResults)
-        ''TODO: This line of code loads data into the 'SearchResults.SearchResults1' table. You can move, or remove it, as needed.
-        'Me.SearchResults1TableAdapter.FillTable(Me.SearchResults.SearchResults1)
-        ''TODO: This line of code loads data into the 'SearchResults._SearchResults' table. You can move, or remove it, as needed.
-        'Me.SearchResultsTableAdapter1.Fill(Me.SearchResults._SearchResults)
+        'TODO: This line of code loads data into the 'Results1.SearchResults' table. You can move, or remove it, as needed.
+        Me.SearchResultsTableAdapter2.Fill(Me.Results1.SearchResults)
         lblName.Text = frmLogin.Username
     End Sub
 
@@ -36,12 +35,17 @@ Public Class frmFoodLookup
 
         response = Nutritionix.SearchItems(request)
 
+
         For Each result In response.Results
             resultsTableAdapter.addResults(result.Item.BrandName, result.Item.Name, result.Item.Id, result.Item.NutritionFact_Calories)
+            Dim item As New Item
+            item = Nutritionix.RetrieveItem(result.Item.Id)
+            resultsTableAdapter.addCalories(item.NutritionFact_Calories, item.Id)
+
         Next
         ToolStripStatusLabel1.Text = ""
         resultsTableAdapter.ClearBeforeFill = True
-        resultsTableAdapter.FillTable(Results.SearchResults)
+        resultsTableAdapter.Fill(Results.SearchResults)
 
     End Sub
 

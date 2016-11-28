@@ -32,6 +32,8 @@ Partial Class frmFoodLookup
         Me.pbAttrib = New System.Windows.Forms.PictureBox()
         Me.lblName = New System.Windows.Forms.Label()
         Me.dgvResults = New System.Windows.Forms.DataGridView()
+        Me.SearchResultsBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Results = New Bernard_Final_FitnessTracker.Results()
         Me.SearchResults1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SearchResultsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
@@ -45,27 +47,29 @@ Partial Class frmFoodLookup
         Me.BrandNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ItemNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ItemId1DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Results = New Bernard_Final_FitnessTracker.Results()
-        Me.SearchResultsBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.SearchResultsTableAdapter2 = New Bernard_Final_FitnessTracker.ResultsTableAdapters.SearchResultsTableAdapter()
+        Me.Results1 = New Bernard_Final_FitnessTracker.Results()
+        Me.SearchResultsBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
         Me.BrandNameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ItemNameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ItemIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CaloriesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.pbAttrib, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvResults, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SearchResultsBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Results, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SearchResults1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SearchResultsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbMeal.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
-        CType(Me.Results, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SearchResultsBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Results1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SearchResultsBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnSearch
         '
-        Me.btnSearch.Location = New System.Drawing.Point(426, 56)
+        Me.btnSearch.Location = New System.Drawing.Point(353, 56)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(75, 23)
         Me.btnSearch.TabIndex = 0
@@ -93,7 +97,7 @@ Partial Class frmFoodLookup
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 291)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(680, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(582, 22)
         Me.StatusStrip1.TabIndex = 4
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -104,7 +108,7 @@ Partial Class frmFoodLookup
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(383, 254)
+        Me.btnAdd.Location = New System.Drawing.Point(310, 243)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(118, 23)
         Me.btnAdd.TabIndex = 5
@@ -115,7 +119,7 @@ Partial Class frmFoodLookup
         '
         Me.pbAttrib.Cursor = System.Windows.Forms.Cursors.Hand
         Me.pbAttrib.Image = Global.Bernard_Final_FitnessTracker.My.Resources.Resources.attribution_jqfdgy
-        Me.pbAttrib.Location = New System.Drawing.Point(514, 12)
+        Me.pbAttrib.Location = New System.Drawing.Point(425, 12)
         Me.pbAttrib.Name = "pbAttrib"
         Me.pbAttrib.Size = New System.Drawing.Size(154, 37)
         Me.pbAttrib.TabIndex = 6
@@ -135,13 +139,23 @@ Partial Class frmFoodLookup
         Me.dgvResults.AllowUserToDeleteRows = False
         Me.dgvResults.AutoGenerateColumns = False
         Me.dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvResults.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.BrandNameDataGridViewTextBoxColumn1, Me.ItemNameDataGridViewTextBoxColumn1, Me.ItemIdDataGridViewTextBoxColumn, Me.CaloriesDataGridViewTextBoxColumn})
+        Me.dgvResults.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.BrandNameDataGridViewTextBoxColumn1, Me.ItemNameDataGridViewTextBoxColumn1, Me.CaloriesDataGridViewTextBoxColumn, Me.ItemIdDataGridViewTextBoxColumn})
         Me.dgvResults.DataSource = Me.SearchResultsBindingSource1
-        Me.dgvResults.Location = New System.Drawing.Point(56, 96)
+        Me.dgvResults.Location = New System.Drawing.Point(79, 97)
         Me.dgvResults.Name = "dgvResults"
         Me.dgvResults.ReadOnly = True
-        Me.dgvResults.Size = New System.Drawing.Size(445, 107)
+        Me.dgvResults.Size = New System.Drawing.Size(349, 107)
         Me.dgvResults.TabIndex = 8
+        '
+        'SearchResultsBindingSource1
+        '
+        Me.SearchResultsBindingSource1.DataMember = "SearchResults"
+        Me.SearchResultsBindingSource1.DataSource = Me.Results
+        '
+        'Results
+        '
+        Me.Results.DataSetName = "Results"
+        Me.Results.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'RadioButton1
         '
@@ -205,7 +219,7 @@ Partial Class frmFoodLookup
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(680, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(582, 24)
         Me.MenuStrip1.TabIndex = 14
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -240,19 +254,19 @@ Partial Class frmFoodLookup
         Me.ItemId1DataGridViewTextBoxColumn.HeaderText = "item id1"
         Me.ItemId1DataGridViewTextBoxColumn.Name = "ItemId1DataGridViewTextBoxColumn"
         '
-        'Results
-        '
-        Me.Results.DataSetName = "Results"
-        Me.Results.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'SearchResultsBindingSource1
-        '
-        Me.SearchResultsBindingSource1.DataMember = "SearchResults"
-        Me.SearchResultsBindingSource1.DataSource = Me.Results
-        '
         'SearchResultsTableAdapter2
         '
         Me.SearchResultsTableAdapter2.ClearBeforeFill = True
+        '
+        'Results1
+        '
+        Me.Results1.DataSetName = "Results"
+        Me.Results1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'SearchResultsBindingSource2
+        '
+        Me.SearchResultsBindingSource2.DataMember = "SearchResults"
+        Me.SearchResultsBindingSource2.DataSource = Me.Results1
         '
         'BrandNameDataGridViewTextBoxColumn1
         '
@@ -268,13 +282,6 @@ Partial Class frmFoodLookup
         Me.ItemNameDataGridViewTextBoxColumn1.Name = "ItemNameDataGridViewTextBoxColumn1"
         Me.ItemNameDataGridViewTextBoxColumn1.ReadOnly = True
         '
-        'ItemIdDataGridViewTextBoxColumn
-        '
-        Me.ItemIdDataGridViewTextBoxColumn.DataPropertyName = "item id"
-        Me.ItemIdDataGridViewTextBoxColumn.HeaderText = "item id"
-        Me.ItemIdDataGridViewTextBoxColumn.Name = "ItemIdDataGridViewTextBoxColumn"
-        Me.ItemIdDataGridViewTextBoxColumn.ReadOnly = True
-        '
         'CaloriesDataGridViewTextBoxColumn
         '
         Me.CaloriesDataGridViewTextBoxColumn.DataPropertyName = "calories"
@@ -282,11 +289,19 @@ Partial Class frmFoodLookup
         Me.CaloriesDataGridViewTextBoxColumn.Name = "CaloriesDataGridViewTextBoxColumn"
         Me.CaloriesDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'ItemIdDataGridViewTextBoxColumn
+        '
+        Me.ItemIdDataGridViewTextBoxColumn.DataPropertyName = "item id"
+        Me.ItemIdDataGridViewTextBoxColumn.HeaderText = "item id"
+        Me.ItemIdDataGridViewTextBoxColumn.Name = "ItemIdDataGridViewTextBoxColumn"
+        Me.ItemIdDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ItemIdDataGridViewTextBoxColumn.Visible = False
+        '
         'frmFoodLookup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(680, 313)
+        Me.ClientSize = New System.Drawing.Size(582, 313)
         Me.Controls.Add(Me.gbMeal)
         Me.Controls.Add(Me.dgvResults)
         Me.Controls.Add(Me.lblName)
@@ -307,14 +322,16 @@ Partial Class frmFoodLookup
         Me.StatusStrip1.PerformLayout()
         CType(Me.pbAttrib, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvResults, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SearchResultsBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Results, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SearchResults1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SearchResultsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbMeal.ResumeLayout(False)
         Me.gbMeal.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        CType(Me.Results, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SearchResultsBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Results1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SearchResultsBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -345,8 +362,10 @@ Partial Class frmFoodLookup
     Friend WithEvents Results As Results
     Friend WithEvents SearchResultsBindingSource1 As BindingSource
     Friend WithEvents SearchResultsTableAdapter2 As ResultsTableAdapters.SearchResultsTableAdapter
+    Friend WithEvents Results1 As Results
+    Friend WithEvents SearchResultsBindingSource2 As BindingSource
     Friend WithEvents BrandNameDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents ItemNameDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents ItemIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CaloriesDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ItemIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
 End Class
