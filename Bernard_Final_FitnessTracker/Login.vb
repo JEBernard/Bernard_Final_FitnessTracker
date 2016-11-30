@@ -62,7 +62,7 @@ VALUES        (@UserName,@Password)"
             .Connection = myConn
             .CommandType = CommandType.Text
             .CommandText = query
-            .Parameters.AddWithValue("@Username", strName)
+            .Parameters.AddWithValue("@UserName", strName)
             .Parameters.AddWithValue("@Password", strPassword)
         End With
         Try
