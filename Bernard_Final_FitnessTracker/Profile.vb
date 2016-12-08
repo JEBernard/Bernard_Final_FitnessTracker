@@ -6,17 +6,21 @@ Public Class frmProfile
 
     Private Sub frmProfile_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ReadData()
+        frmLogin.Close()
     End Sub
 
     Private Sub EditProfileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditProfileToolStripMenuItem.Click
         frmEdit.ShowDialog()
-
     End Sub
 
     Private Sub ReadData()
         Dim comm As New SqlCommand
         Dim query As String = "SELECT Id, UserName, Password, Height, Weight, [Goal Weight] FROM dbo.Users
 WHERE UserName = @UserName"
+
+        txtName.Text = frmLogin.Username
+        txtDate.Text = Date.Now.ToShortDateString()
+
         With comm
             .Connection = myConn
             .CommandType = CommandType.Text
@@ -39,8 +43,6 @@ WHERE UserName = @UserName"
                 myConn.Close()
             End If
 
-            txtName.Text = frmLogin.Username
-            txtDate.Text = Date.Now.ToShortDateString()
             myConn.Close()
         Catch ex As Exception
             ToolStripStatusLabel1.Text = ex.Message
@@ -54,5 +56,9 @@ WHERE UserName = @UserName"
 
     Private Sub AddFoodToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddFoodToolStripMenuItem.Click
         frmFoodLookup.ShowDialog()
+    End Sub
+
+    Private Sub ViewDiaryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewDiaryToolStripMenuItem.Click
+        frmDiary.Show()
     End Sub
 End Class

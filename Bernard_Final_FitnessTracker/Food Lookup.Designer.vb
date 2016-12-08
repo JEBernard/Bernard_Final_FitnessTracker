@@ -28,18 +28,23 @@ Partial Class frmFoodLookup
         Me.Label1 = New System.Windows.Forms.Label()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.LookupStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.pbAttrib = New System.Windows.Forms.PictureBox()
         Me.lblName = New System.Windows.Forms.Label()
         Me.dgvResults = New System.Windows.Forms.DataGridView()
+        Me.BrandNameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemNameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CaloriesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ItemIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SearchResultsBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.Results = New Bernard_Final_FitnessTracker.Results()
         Me.SearchResults1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SearchResultsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton4 = New System.Windows.Forms.RadioButton()
+        Me.radBreakfast = New System.Windows.Forms.RadioButton()
+        Me.radLunch = New System.Windows.Forms.RadioButton()
+        Me.radDinner = New System.Windows.Forms.RadioButton()
+        Me.radSnack = New System.Windows.Forms.RadioButton()
         Me.gbMeal = New System.Windows.Forms.GroupBox()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -50,10 +55,6 @@ Partial Class frmFoodLookup
         Me.SearchResultsTableAdapter2 = New Bernard_Final_FitnessTracker.ResultsTableAdapters.SearchResultsTableAdapter()
         Me.Results1 = New Bernard_Final_FitnessTracker.Results()
         Me.SearchResultsBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BrandNameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ItemNameDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CaloriesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ItemIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.pbAttrib, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvResults, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -94,7 +95,7 @@ Partial Class frmFoodLookup
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.LookupStatusLabel})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 291)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(582, 22)
@@ -105,6 +106,11 @@ Partial Class frmFoodLookup
         '
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(0, 17)
+        '
+        'LookupStatusLabel
+        '
+        Me.LookupStatusLabel.Name = "LookupStatusLabel"
+        Me.LookupStatusLabel.Size = New System.Drawing.Size(0, 17)
         '
         'btnAdd
         '
@@ -147,6 +153,35 @@ Partial Class frmFoodLookup
         Me.dgvResults.Size = New System.Drawing.Size(349, 107)
         Me.dgvResults.TabIndex = 8
         '
+        'BrandNameDataGridViewTextBoxColumn1
+        '
+        Me.BrandNameDataGridViewTextBoxColumn1.DataPropertyName = "brand name"
+        Me.BrandNameDataGridViewTextBoxColumn1.HeaderText = "brand name"
+        Me.BrandNameDataGridViewTextBoxColumn1.Name = "BrandNameDataGridViewTextBoxColumn1"
+        Me.BrandNameDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'ItemNameDataGridViewTextBoxColumn1
+        '
+        Me.ItemNameDataGridViewTextBoxColumn1.DataPropertyName = "item name"
+        Me.ItemNameDataGridViewTextBoxColumn1.HeaderText = "item name"
+        Me.ItemNameDataGridViewTextBoxColumn1.Name = "ItemNameDataGridViewTextBoxColumn1"
+        Me.ItemNameDataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'CaloriesDataGridViewTextBoxColumn
+        '
+        Me.CaloriesDataGridViewTextBoxColumn.DataPropertyName = "calories"
+        Me.CaloriesDataGridViewTextBoxColumn.HeaderText = "calories"
+        Me.CaloriesDataGridViewTextBoxColumn.Name = "CaloriesDataGridViewTextBoxColumn"
+        Me.CaloriesDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ItemIdDataGridViewTextBoxColumn
+        '
+        Me.ItemIdDataGridViewTextBoxColumn.DataPropertyName = "item id"
+        Me.ItemIdDataGridViewTextBoxColumn.HeaderText = "item id"
+        Me.ItemIdDataGridViewTextBoxColumn.Name = "ItemIdDataGridViewTextBoxColumn"
+        Me.ItemIdDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ItemIdDataGridViewTextBoxColumn.Visible = False
+        '
         'SearchResultsBindingSource1
         '
         Me.SearchResultsBindingSource1.DataMember = "SearchResults"
@@ -157,56 +192,56 @@ Partial Class frmFoodLookup
         Me.Results.DataSetName = "Results"
         Me.Results.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'RadioButton1
+        'radBreakfast
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(23, 19)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(70, 17)
-        Me.RadioButton1.TabIndex = 9
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "Breakfast"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.radBreakfast.AutoSize = True
+        Me.radBreakfast.Location = New System.Drawing.Point(23, 19)
+        Me.radBreakfast.Name = "radBreakfast"
+        Me.radBreakfast.Size = New System.Drawing.Size(70, 17)
+        Me.radBreakfast.TabIndex = 9
+        Me.radBreakfast.TabStop = True
+        Me.radBreakfast.Text = "Breakfast"
+        Me.radBreakfast.UseVisualStyleBackColor = True
         '
-        'RadioButton2
+        'radLunch
         '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(119, 19)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(55, 17)
-        Me.RadioButton2.TabIndex = 10
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "Lunch"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.radLunch.AutoSize = True
+        Me.radLunch.Location = New System.Drawing.Point(119, 19)
+        Me.radLunch.Name = "radLunch"
+        Me.radLunch.Size = New System.Drawing.Size(55, 17)
+        Me.radLunch.TabIndex = 10
+        Me.radLunch.TabStop = True
+        Me.radLunch.Text = "Lunch"
+        Me.radLunch.UseVisualStyleBackColor = True
         '
-        'RadioButton3
+        'radDinner
         '
-        Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.Location = New System.Drawing.Point(23, 42)
-        Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.Size = New System.Drawing.Size(56, 17)
-        Me.RadioButton3.TabIndex = 11
-        Me.RadioButton3.TabStop = True
-        Me.RadioButton3.Text = "Dinner"
-        Me.RadioButton3.UseVisualStyleBackColor = True
+        Me.radDinner.AutoSize = True
+        Me.radDinner.Location = New System.Drawing.Point(23, 42)
+        Me.radDinner.Name = "radDinner"
+        Me.radDinner.Size = New System.Drawing.Size(56, 17)
+        Me.radDinner.TabIndex = 11
+        Me.radDinner.TabStop = True
+        Me.radDinner.Text = "Dinner"
+        Me.radDinner.UseVisualStyleBackColor = True
         '
-        'RadioButton4
+        'radSnack
         '
-        Me.RadioButton4.AutoSize = True
-        Me.RadioButton4.Location = New System.Drawing.Point(119, 42)
-        Me.RadioButton4.Name = "RadioButton4"
-        Me.RadioButton4.Size = New System.Drawing.Size(56, 17)
-        Me.RadioButton4.TabIndex = 12
-        Me.RadioButton4.TabStop = True
-        Me.RadioButton4.Text = "Snack"
-        Me.RadioButton4.UseVisualStyleBackColor = True
+        Me.radSnack.AutoSize = True
+        Me.radSnack.Location = New System.Drawing.Point(119, 42)
+        Me.radSnack.Name = "radSnack"
+        Me.radSnack.Size = New System.Drawing.Size(56, 17)
+        Me.radSnack.TabIndex = 12
+        Me.radSnack.TabStop = True
+        Me.radSnack.Text = "Snack"
+        Me.radSnack.UseVisualStyleBackColor = True
         '
         'gbMeal
         '
-        Me.gbMeal.Controls.Add(Me.RadioButton4)
-        Me.gbMeal.Controls.Add(Me.RadioButton3)
-        Me.gbMeal.Controls.Add(Me.RadioButton2)
-        Me.gbMeal.Controls.Add(Me.RadioButton1)
+        Me.gbMeal.Controls.Add(Me.radSnack)
+        Me.gbMeal.Controls.Add(Me.radDinner)
+        Me.gbMeal.Controls.Add(Me.radLunch)
+        Me.gbMeal.Controls.Add(Me.radBreakfast)
         Me.gbMeal.Location = New System.Drawing.Point(56, 224)
         Me.gbMeal.Name = "gbMeal"
         Me.gbMeal.Size = New System.Drawing.Size(216, 64)
@@ -268,35 +303,6 @@ Partial Class frmFoodLookup
         Me.SearchResultsBindingSource2.DataMember = "SearchResults"
         Me.SearchResultsBindingSource2.DataSource = Me.Results1
         '
-        'BrandNameDataGridViewTextBoxColumn1
-        '
-        Me.BrandNameDataGridViewTextBoxColumn1.DataPropertyName = "brand name"
-        Me.BrandNameDataGridViewTextBoxColumn1.HeaderText = "brand name"
-        Me.BrandNameDataGridViewTextBoxColumn1.Name = "BrandNameDataGridViewTextBoxColumn1"
-        Me.BrandNameDataGridViewTextBoxColumn1.ReadOnly = True
-        '
-        'ItemNameDataGridViewTextBoxColumn1
-        '
-        Me.ItemNameDataGridViewTextBoxColumn1.DataPropertyName = "item name"
-        Me.ItemNameDataGridViewTextBoxColumn1.HeaderText = "item name"
-        Me.ItemNameDataGridViewTextBoxColumn1.Name = "ItemNameDataGridViewTextBoxColumn1"
-        Me.ItemNameDataGridViewTextBoxColumn1.ReadOnly = True
-        '
-        'CaloriesDataGridViewTextBoxColumn
-        '
-        Me.CaloriesDataGridViewTextBoxColumn.DataPropertyName = "calories"
-        Me.CaloriesDataGridViewTextBoxColumn.HeaderText = "calories"
-        Me.CaloriesDataGridViewTextBoxColumn.Name = "CaloriesDataGridViewTextBoxColumn"
-        Me.CaloriesDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ItemIdDataGridViewTextBoxColumn
-        '
-        Me.ItemIdDataGridViewTextBoxColumn.DataPropertyName = "item id"
-        Me.ItemIdDataGridViewTextBoxColumn.HeaderText = "item id"
-        Me.ItemIdDataGridViewTextBoxColumn.Name = "ItemIdDataGridViewTextBoxColumn"
-        Me.ItemIdDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ItemIdDataGridViewTextBoxColumn.Visible = False
-        '
         'frmFoodLookup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -348,10 +354,10 @@ Partial Class frmFoodLookup
     Friend WithEvents dgvResults As DataGridView
     Friend WithEvents SearchResultsBindingSource As BindingSource
     Friend WithEvents SearchResults1BindingSource As BindingSource
-    Friend WithEvents RadioButton1 As RadioButton
-    Friend WithEvents RadioButton2 As RadioButton
-    Friend WithEvents RadioButton3 As RadioButton
-    Friend WithEvents RadioButton4 As RadioButton
+    Friend WithEvents radBreakfast As RadioButton
+    Friend WithEvents radLunch As RadioButton
+    Friend WithEvents radDinner As RadioButton
+    Friend WithEvents radSnack As RadioButton
     Friend WithEvents gbMeal As GroupBox
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
@@ -368,4 +374,5 @@ Partial Class frmFoodLookup
     Friend WithEvents ItemNameDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents CaloriesDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ItemIdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents LookupStatusLabel As ToolStripStatusLabel
 End Class
