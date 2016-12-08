@@ -38,7 +38,9 @@ WHERE UserName = @UserName AND  Password = @Password"
 
                 Username = strName
                 myConn.Close()
+
                 frmProfile.ShowDialog()
+
                 Me.Close()
             Else
                 MessageBox.Show("Invalid Username/Password")

@@ -106,43 +106,43 @@ Partial Class frmProfile
         '
         Me.DiaryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddFoodToolStripMenuItem, Me.ViewDiaryToolStripMenuItem})
         Me.DiaryToolStripMenuItem.Name = "DiaryToolStripMenuItem"
-        Me.DiaryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DiaryToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.DiaryToolStripMenuItem.Text = "Diary"
         '
         'AddFoodToolStripMenuItem
         '
         Me.AddFoodToolStripMenuItem.Name = "AddFoodToolStripMenuItem"
-        Me.AddFoodToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AddFoodToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.AddFoodToolStripMenuItem.Text = "Add Food"
         '
         'ViewDiaryToolStripMenuItem
         '
         Me.ViewDiaryToolStripMenuItem.Name = "ViewDiaryToolStripMenuItem"
-        Me.ViewDiaryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ViewDiaryToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.ViewDiaryToolStripMenuItem.Text = "View Diary"
         '
         'EditProfileToolStripMenuItem
         '
         Me.EditProfileToolStripMenuItem.Name = "EditProfileToolStripMenuItem"
-        Me.EditProfileToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.EditProfileToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.EditProfileToolStripMenuItem.Text = "Edit Profile"
         '
         'ReportsToolStripMenuItem
         '
         Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
-        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ReportsToolStripMenuItem.Text = "Reports"
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'lblDate
@@ -250,6 +250,7 @@ Partial Class frmProfile
         Me.AcceptButton = Me.btnSave
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
         Me.ClientSize = New System.Drawing.Size(424, 287)
         Me.Controls.Add(Me.btnRefresh)
         Me.Controls.Add(Me.StatusStrip1)

@@ -6,6 +6,7 @@ Public Class frmDiary
     Dim selectedDate As DateTime = dtpDate.Value.ToShortDateString
 
     Private Sub UserDiary_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         lblName.Text = frmLogin.Username
         dtpDate.Value = DateTime.Now.ToShortDateString
         FillBreakfast()
