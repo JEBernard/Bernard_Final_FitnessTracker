@@ -6,7 +6,6 @@ Public Class frmProfile
 
     Private Sub frmProfile_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ReadData()
-
     End Sub
 
     Private Sub EditProfileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditProfileToolStripMenuItem.Click
@@ -59,6 +58,10 @@ WHERE UserName = @UserName"
     End Sub
 
     Private Sub ViewDiaryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewDiaryToolStripMenuItem.Click
-        frmDiary.Show()
+        frmDiary.ShowDialog()
+    End Sub
+
+    Private Sub ReportsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReportsToolStripMenuItem.Click
+        Reports.Show()
     End Sub
 End Class

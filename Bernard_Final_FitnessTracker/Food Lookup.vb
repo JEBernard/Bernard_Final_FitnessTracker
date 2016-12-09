@@ -20,6 +20,7 @@ Public Class frmFoodLookup
     Dim diaryTableAdpater As New DiaryTableAdapters.DiaryTableAdapter
     Dim connection As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Users.mdf;Integrated Security=True"
     Dim myConn As New SqlConnection(connection)
+    Dim tableAdapter As New DiaryTableAdapters.DiaryTableAdapter()
 
     Private Sub Food_Lookup_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'Results1.SearchResults' table. You can move, or remove it, as needed.
@@ -65,33 +66,26 @@ Public Class frmFoodLookup
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        Dim selection As String
+        Dim itemName As String = dgvResults.SelectedRows(0).Cells(1).Value.ToString()
+        Dim calories As String = dgvResults.SelectedRows(0).Cells(2).Value.ToString()
+
+
+
         Dim mealSelection As String
-        selection = dgvResults.SelectedColumns.ToString
-        Dim comm As New SqlCommand
-        Dim query As String = "INSERT INTO [dbo].[Diary] ([User], [Meal], [Entry], [Date]) VALUES (@User, @Meal, @Entry, @Date);
-SELECT [User], Meal, Entry, Date FROM Diary WHERE ([User] = @User)"
+        Dim currDate As DateTime = DateTime.Now.ToShortDateString
         If radBreakfast.Checked Then
             mealSelection = "Breakfast"
         ElseIf radLunch.Checked Then
             mealSelection = "Lunch"
         ElseIf radDinner.Checked Then
             mealSelection = "Dinner"
-        Else
+        ElseIf radSnack.Checked Then
             mealSelection = "Snack"
         End If
-        Try
-            With comm
-                .Connection = myConn
-                .CommandType = CommandType.Text
-                .CommandText = query
-                .Parameters.AddWithValue("@User", lblName.Text)
-                .Parameters.AddWithValue("@Meal", mealSelection)
-                .Parameters.AddWithValue("@Entry", selection)
-                .Parameters.AddWithValue("@Date", DateTime.Now.ToShortDateString)
-                LookupStatusLabel.Text = "Diary Updated Successfully"
-            End With
 
+        Try
+            tableAdapter.AddEntry(frmLogin.Username, mealSelection, itemName, calories, currDate)
+            LookupStatusLabel.Text = "Food entry added to diary"
         Catch ex As Exception
             LookupStatusLabel.Text = ex.Message
         End Try

@@ -148,6 +148,7 @@ Partial Class frmFoodLookup
         Me.dgvResults.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.BrandNameDataGridViewTextBoxColumn1, Me.ItemNameDataGridViewTextBoxColumn1, Me.CaloriesDataGridViewTextBoxColumn, Me.ItemIdDataGridViewTextBoxColumn})
         Me.dgvResults.DataSource = Me.SearchResultsBindingSource1
         Me.dgvResults.Location = New System.Drawing.Point(79, 97)
+        Me.dgvResults.MultiSelect = False
         Me.dgvResults.Name = "dgvResults"
         Me.dgvResults.ReadOnly = True
         Me.dgvResults.Size = New System.Drawing.Size(349, 107)

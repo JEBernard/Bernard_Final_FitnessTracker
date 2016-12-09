@@ -33,7 +33,6 @@ Partial Class frmProfile
         Me.ViewDiaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditProfileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblDate = New System.Windows.Forms.Label()
         Me.txtDate = New System.Windows.Forms.TextBox()
@@ -97,7 +96,7 @@ Partial Class frmProfile
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DiaryToolStripMenuItem, Me.EditProfileToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.HelpToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DiaryToolStripMenuItem, Me.EditProfileToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
@@ -106,7 +105,7 @@ Partial Class frmProfile
         '
         Me.DiaryToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddFoodToolStripMenuItem, Me.ViewDiaryToolStripMenuItem})
         Me.DiaryToolStripMenuItem.Name = "DiaryToolStripMenuItem"
-        Me.DiaryToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.DiaryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.DiaryToolStripMenuItem.Text = "Diary"
         '
         'AddFoodToolStripMenuItem
@@ -124,25 +123,19 @@ Partial Class frmProfile
         'EditProfileToolStripMenuItem
         '
         Me.EditProfileToolStripMenuItem.Name = "EditProfileToolStripMenuItem"
-        Me.EditProfileToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.EditProfileToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.EditProfileToolStripMenuItem.Text = "Edit Profile"
         '
         'ReportsToolStripMenuItem
         '
         Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
-        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ReportsToolStripMenuItem.Text = "Reports"
-        '
-        'HelpToolStripMenuItem
-        '
-        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
-        Me.HelpToolStripMenuItem.Text = "Help"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(131, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'lblDate
@@ -287,7 +280,6 @@ Partial Class frmProfile
     Friend WithEvents lblWeight As Label
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents lblDate As Label
     Friend WithEvents txtDate As TextBox

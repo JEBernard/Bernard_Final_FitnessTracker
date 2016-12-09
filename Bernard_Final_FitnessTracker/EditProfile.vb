@@ -13,7 +13,6 @@ Public Class frmEdit
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-
         Dim comm As New SqlCommand
         Dim query As String =
             " Update [dbo].[Users] Set  [Height] = @Height, [Weight] = @Weight, [Goal Weight] = @Goal_Weight WHERE
@@ -30,16 +29,24 @@ Public Class frmEdit
 
         'Validate textbox entries then save to database
 
-        'Validate blank height/weight. Goal can be blank if previously set
-        If txtHeight.Text = "" Then
-            ErrorProvider1.SetError(txtHeight, "Height cannot be blank.")
-        ElseIf txtWeight.Text = "" Then
-            ErrorProvider1.SetError(txtWeight, "Weight cannot be blank.")
+        If txtHeight.Text = String.Empty Then
+            ErrorProvider1.SetError(txtHeight, "Height cannot be blank")
+        ElseIf Not IsNumeric(txtHeight.Text) Then
+            ErrorProvider1.SetError(txtHeight, "Please enter a valid Height")
+        ElseIf txtWeight.Text = String.Empty Then
+            ErrorProvider1.SetError(txtWeight, "Weight cannot be blank")
+        ElseIf Not IsNumeric(txtWeight.Text) Then
+            ErrorProvider1.SetError(txtWeight, "Please enter a valid Weight")
+        ElseIf txtGoal.Text = String.Empty Then
+            ErrorProvider1.SetError(txtGoal, "Goal cannot be blank")
+        ElseIf Not IsNumeric(txtGoal.Text) Then
+            ErrorProvider1.SetError(txtGoal, "Please enter a valid Goal Weight")
         Else
             Try
                 myConn.Open()
                 comm.ExecuteNonQuery()
                 ToolStripStatusLabel1.Text = "User profile has been updated"
+                Me.Close()
                 myConn.Close()
             Catch ex As Exception
                 ToolStripStatusLabel1.Text = ex.Message

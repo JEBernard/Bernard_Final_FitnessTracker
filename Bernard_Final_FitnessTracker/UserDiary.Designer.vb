@@ -23,74 +23,53 @@ Partial Class frmDiary
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.dgvBreakfast = New System.Windows.Forms.DataGridView()
-        Me.DiaryBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.lblBreakfast = New System.Windows.Forms.Label()
-        Me.lblLunch = New System.Windows.Forms.Label()
-        Me.dgvLunch = New System.Windows.Forms.DataGridView()
-        Me.lblSnack = New System.Windows.Forms.Label()
-        Me.dgvSnack = New System.Windows.Forms.DataGridView()
-        Me.lblDinner = New System.Windows.Forms.Label()
-        Me.dgvDinner = New System.Windows.Forms.DataGridView()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.lblName = New System.Windows.Forms.Label()
         Me.dtpDate = New System.Windows.Forms.DateTimePicker()
-        Me.DiaryTableAdapter = New Bernard_Final_FitnessTracker.DiaryTableAdapters.DiaryTableAdapter()
+        Me.DiaryBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DiaryBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Diary = New Bernard_Final_FitnessTracker.Diary()
-        Me.DiaryBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DiaryBindingSource3 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.LunchDiaryBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.radSnack = New System.Windows.Forms.RadioButton()
+        Me.radDinner = New System.Windows.Forms.RadioButton()
+        Me.radLunch = New System.Windows.Forms.RadioButton()
+        Me.radBreakfast = New System.Windows.Forms.RadioButton()
+        Me.gbViewMeal = New System.Windows.Forms.GroupBox()
+        Me.btnViewAll = New System.Windows.Forms.Button()
         Me.UserDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MealDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EntryDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CaloriesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UserDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MealDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EntryDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DateDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UserDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MealDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EntryDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DateDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UserDataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MealDataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EntryDataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DateDataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        CType(Me.dgvBreakfast, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DiaryBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.DiaryBindingSource5 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Diary = New Bernard_Final_FitnessTracker.Diary()
+        Me.DiaryBindingSource4 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DiaryBindingSource3 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DiaryTableAdapter = New Bernard_Final_FitnessTracker.DiaryTableAdapters.DiaryTableAdapter()
+        Me.DiaryBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.lblUser = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
-        CType(Me.dgvLunch, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvSnack, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvDinner, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DiaryBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DiaryBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LunchDiaryBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbViewMeal.SuspendLayout()
+        CType(Me.DiaryBindingSource5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Diary, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DiaryBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DiaryBindingSource4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DiaryBindingSource3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DiaryBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'dgvBreakfast
-        '
-        Me.dgvBreakfast.AllowUserToAddRows = False
-        Me.dgvBreakfast.AllowUserToDeleteRows = False
-        Me.dgvBreakfast.AutoGenerateColumns = False
-        Me.dgvBreakfast.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvBreakfast.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.UserDataGridViewTextBoxColumn, Me.MealDataGridViewTextBoxColumn, Me.EntryDataGridViewTextBoxColumn, Me.DateDataGridViewTextBoxColumn})
-        Me.dgvBreakfast.DataSource = Me.DiaryBindingSource3
-        Me.dgvBreakfast.Location = New System.Drawing.Point(21, 123)
-        Me.dgvBreakfast.Name = "dgvBreakfast"
-        Me.dgvBreakfast.ReadOnly = True
-        Me.dgvBreakfast.Size = New System.Drawing.Size(147, 44)
-        Me.dgvBreakfast.TabIndex = 0
         '
         'MenuStrip1
         '
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(497, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(672, 24)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -107,95 +86,13 @@ Partial Class frmDiary
         Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(92, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
-        'lblBreakfast
-        '
-        Me.lblBreakfast.AutoSize = True
-        Me.lblBreakfast.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblBreakfast.Location = New System.Drawing.Point(21, 97)
-        Me.lblBreakfast.Name = "lblBreakfast"
-        Me.lblBreakfast.Size = New System.Drawing.Size(74, 16)
-        Me.lblBreakfast.TabIndex = 2
-        Me.lblBreakfast.Text = "Breakfast"
-        '
-        'lblLunch
-        '
-        Me.lblLunch.AutoSize = True
-        Me.lblLunch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLunch.Location = New System.Drawing.Point(296, 97)
-        Me.lblLunch.Name = "lblLunch"
-        Me.lblLunch.Size = New System.Drawing.Size(48, 16)
-        Me.lblLunch.TabIndex = 4
-        Me.lblLunch.Text = "Lunch"
-        '
-        'dgvLunch
-        '
-        Me.dgvLunch.AllowUserToAddRows = False
-        Me.dgvLunch.AllowUserToDeleteRows = False
-        Me.dgvLunch.AutoGenerateColumns = False
-        Me.dgvLunch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvLunch.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.UserDataGridViewTextBoxColumn1, Me.MealDataGridViewTextBoxColumn1, Me.EntryDataGridViewTextBoxColumn1, Me.DateDataGridViewTextBoxColumn1})
-        Me.dgvLunch.DataSource = Me.DiaryBindingSource3
-        Me.dgvLunch.Location = New System.Drawing.Point(296, 123)
-        Me.dgvLunch.Name = "dgvLunch"
-        Me.dgvLunch.ReadOnly = True
-        Me.dgvLunch.Size = New System.Drawing.Size(147, 44)
-        Me.dgvLunch.TabIndex = 3
-        '
-        'lblSnack
-        '
-        Me.lblSnack.AutoSize = True
-        Me.lblSnack.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSnack.Location = New System.Drawing.Point(294, 198)
-        Me.lblSnack.Name = "lblSnack"
-        Me.lblSnack.Size = New System.Drawing.Size(51, 16)
-        Me.lblSnack.TabIndex = 6
-        Me.lblSnack.Text = "Snack"
-        '
-        'dgvSnack
-        '
-        Me.dgvSnack.AllowUserToAddRows = False
-        Me.dgvSnack.AllowUserToDeleteRows = False
-        Me.dgvSnack.AutoGenerateColumns = False
-        Me.dgvSnack.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvSnack.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.UserDataGridViewTextBoxColumn3, Me.MealDataGridViewTextBoxColumn3, Me.EntryDataGridViewTextBoxColumn3, Me.DateDataGridViewTextBoxColumn3})
-        Me.dgvSnack.DataSource = Me.DiaryBindingSource3
-        Me.dgvSnack.Location = New System.Drawing.Point(294, 224)
-        Me.dgvSnack.Name = "dgvSnack"
-        Me.dgvSnack.ReadOnly = True
-        Me.dgvSnack.Size = New System.Drawing.Size(147, 44)
-        Me.dgvSnack.TabIndex = 5
-        '
-        'lblDinner
-        '
-        Me.lblDinner.AutoSize = True
-        Me.lblDinner.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDinner.Location = New System.Drawing.Point(21, 198)
-        Me.lblDinner.Name = "lblDinner"
-        Me.lblDinner.Size = New System.Drawing.Size(53, 16)
-        Me.lblDinner.TabIndex = 8
-        Me.lblDinner.Text = "Dinner"
-        '
-        'dgvDinner
-        '
-        Me.dgvDinner.AllowUserToAddRows = False
-        Me.dgvDinner.AllowUserToDeleteRows = False
-        Me.dgvDinner.AutoGenerateColumns = False
-        Me.dgvDinner.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvDinner.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.UserDataGridViewTextBoxColumn2, Me.MealDataGridViewTextBoxColumn2, Me.EntryDataGridViewTextBoxColumn2, Me.DateDataGridViewTextBoxColumn2})
-        Me.dgvDinner.DataSource = Me.DiaryBindingSource3
-        Me.dgvDinner.Location = New System.Drawing.Point(21, 224)
-        Me.dgvDinner.Name = "dgvDinner"
-        Me.dgvDinner.ReadOnly = True
-        Me.dgvDinner.Size = New System.Drawing.Size(147, 44)
-        Me.dgvDinner.TabIndex = 7
-        '
         'btnClose
         '
-        Me.btnClose.Location = New System.Drawing.Point(368, 318)
+        Me.btnClose.Location = New System.Drawing.Point(515, 304)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 23)
         Me.btnClose.TabIndex = 9
-        Me.btnClose.Text = "Close"
+        Me.btnClose.Text = "Ok"
         Me.btnClose.UseVisualStyleBackColor = True
         '
         'lblName
@@ -208,29 +105,90 @@ Partial Class frmDiary
         '
         'dtpDate
         '
-        Me.dtpDate.Location = New System.Drawing.Point(119, 59)
+        Me.dtpDate.Location = New System.Drawing.Point(204, 73)
         Me.dtpDate.Name = "dtpDate"
         Me.dtpDate.Size = New System.Drawing.Size(200, 20)
         Me.dtpDate.TabIndex = 12
         '
-        'DiaryTableAdapter
+        'DataGridView1
         '
-        Me.DiaryTableAdapter.ClearBeforeFill = True
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AutoGenerateColumns = False
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.UserDataGridViewTextBoxColumn, Me.MealDataGridViewTextBoxColumn, Me.EntryDataGridViewTextBoxColumn, Me.CaloriesDataGridViewTextBoxColumn, Me.DateDataGridViewTextBoxColumn})
+        Me.DataGridView1.DataSource = Me.DiaryBindingSource5
+        Me.DataGridView1.Location = New System.Drawing.Point(45, 115)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.Size = New System.Drawing.Size(545, 130)
+        Me.DataGridView1.TabIndex = 13
         '
-        'Diary
+        'radSnack
         '
-        Me.Diary.DataSetName = "Diary"
-        Me.Diary.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.radSnack.AutoSize = True
+        Me.radSnack.Location = New System.Drawing.Point(119, 42)
+        Me.radSnack.Name = "radSnack"
+        Me.radSnack.Size = New System.Drawing.Size(56, 17)
+        Me.radSnack.TabIndex = 12
+        Me.radSnack.TabStop = True
+        Me.radSnack.Text = "Snack"
+        Me.radSnack.UseVisualStyleBackColor = True
         '
-        'DiaryBindingSource2
+        'radDinner
         '
-        Me.DiaryBindingSource2.DataSource = Me.Diary
-        Me.DiaryBindingSource2.Position = 0
+        Me.radDinner.AutoSize = True
+        Me.radDinner.Location = New System.Drawing.Point(23, 42)
+        Me.radDinner.Name = "radDinner"
+        Me.radDinner.Size = New System.Drawing.Size(56, 17)
+        Me.radDinner.TabIndex = 11
+        Me.radDinner.TabStop = True
+        Me.radDinner.Text = "Dinner"
+        Me.radDinner.UseVisualStyleBackColor = True
         '
-        'DiaryBindingSource3
+        'radLunch
         '
-        Me.DiaryBindingSource3.DataMember = "Diary"
-        Me.DiaryBindingSource3.DataSource = Me.Diary
+        Me.radLunch.AutoSize = True
+        Me.radLunch.Location = New System.Drawing.Point(119, 19)
+        Me.radLunch.Name = "radLunch"
+        Me.radLunch.Size = New System.Drawing.Size(55, 17)
+        Me.radLunch.TabIndex = 10
+        Me.radLunch.TabStop = True
+        Me.radLunch.Text = "Lunch"
+        Me.radLunch.UseVisualStyleBackColor = True
+        '
+        'radBreakfast
+        '
+        Me.radBreakfast.AutoSize = True
+        Me.radBreakfast.Location = New System.Drawing.Point(23, 19)
+        Me.radBreakfast.Name = "radBreakfast"
+        Me.radBreakfast.Size = New System.Drawing.Size(70, 17)
+        Me.radBreakfast.TabIndex = 9
+        Me.radBreakfast.TabStop = True
+        Me.radBreakfast.Text = "Breakfast"
+        Me.radBreakfast.UseVisualStyleBackColor = True
+        '
+        'gbViewMeal
+        '
+        Me.gbViewMeal.Controls.Add(Me.radSnack)
+        Me.gbViewMeal.Controls.Add(Me.radDinner)
+        Me.gbViewMeal.Controls.Add(Me.radLunch)
+        Me.gbViewMeal.Controls.Add(Me.radBreakfast)
+        Me.gbViewMeal.Location = New System.Drawing.Point(188, 268)
+        Me.gbViewMeal.Name = "gbViewMeal"
+        Me.gbViewMeal.Size = New System.Drawing.Size(216, 64)
+        Me.gbViewMeal.TabIndex = 14
+        Me.gbViewMeal.TabStop = False
+        Me.gbViewMeal.Text = "View By Meal"
+        '
+        'btnViewAll
+        '
+        Me.btnViewAll.Location = New System.Drawing.Point(495, 73)
+        Me.btnViewAll.Name = "btnViewAll"
+        Me.btnViewAll.Size = New System.Drawing.Size(95, 23)
+        Me.btnViewAll.TabIndex = 15
+        Me.btnViewAll.Text = "View All Meals"
+        Me.btnViewAll.UseVisualStyleBackColor = True
         '
         'UserDataGridViewTextBoxColumn
         '
@@ -253,6 +211,13 @@ Partial Class frmDiary
         Me.EntryDataGridViewTextBoxColumn.Name = "EntryDataGridViewTextBoxColumn"
         Me.EntryDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'CaloriesDataGridViewTextBoxColumn
+        '
+        Me.CaloriesDataGridViewTextBoxColumn.DataPropertyName = "Calories"
+        Me.CaloriesDataGridViewTextBoxColumn.HeaderText = "Calories"
+        Me.CaloriesDataGridViewTextBoxColumn.Name = "CaloriesDataGridViewTextBoxColumn"
+        Me.CaloriesDataGridViewTextBoxColumn.ReadOnly = True
+        '
         'DateDataGridViewTextBoxColumn
         '
         Me.DateDataGridViewTextBoxColumn.DataPropertyName = "Date"
@@ -260,89 +225,41 @@ Partial Class frmDiary
         Me.DateDataGridViewTextBoxColumn.Name = "DateDataGridViewTextBoxColumn"
         Me.DateDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'UserDataGridViewTextBoxColumn1
+        'DiaryBindingSource5
         '
-        Me.UserDataGridViewTextBoxColumn1.DataPropertyName = "User"
-        Me.UserDataGridViewTextBoxColumn1.HeaderText = "User"
-        Me.UserDataGridViewTextBoxColumn1.Name = "UserDataGridViewTextBoxColumn1"
-        Me.UserDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DiaryBindingSource5.DataMember = "Diary"
+        Me.DiaryBindingSource5.DataSource = Me.Diary
         '
-        'MealDataGridViewTextBoxColumn1
+        'Diary
         '
-        Me.MealDataGridViewTextBoxColumn1.DataPropertyName = "Meal"
-        Me.MealDataGridViewTextBoxColumn1.HeaderText = "Meal"
-        Me.MealDataGridViewTextBoxColumn1.Name = "MealDataGridViewTextBoxColumn1"
-        Me.MealDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.Diary.DataSetName = "Diary"
+        Me.Diary.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'EntryDataGridViewTextBoxColumn1
+        'DiaryBindingSource4
         '
-        Me.EntryDataGridViewTextBoxColumn1.DataPropertyName = "Entry"
-        Me.EntryDataGridViewTextBoxColumn1.HeaderText = "Entry"
-        Me.EntryDataGridViewTextBoxColumn1.Name = "EntryDataGridViewTextBoxColumn1"
-        Me.EntryDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DiaryBindingSource4.DataMember = "Diary"
+        Me.DiaryBindingSource4.DataSource = Me.Diary
         '
-        'DateDataGridViewTextBoxColumn1
+        'DiaryBindingSource3
         '
-        Me.DateDataGridViewTextBoxColumn1.DataPropertyName = "Date"
-        Me.DateDataGridViewTextBoxColumn1.HeaderText = "Date"
-        Me.DateDataGridViewTextBoxColumn1.Name = "DateDataGridViewTextBoxColumn1"
-        Me.DateDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DiaryBindingSource3.DataMember = "Diary"
+        Me.DiaryBindingSource3.DataSource = Me.Diary
         '
-        'UserDataGridViewTextBoxColumn2
+        'DiaryTableAdapter
         '
-        Me.UserDataGridViewTextBoxColumn2.DataPropertyName = "User"
-        Me.UserDataGridViewTextBoxColumn2.HeaderText = "User"
-        Me.UserDataGridViewTextBoxColumn2.Name = "UserDataGridViewTextBoxColumn2"
-        Me.UserDataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DiaryTableAdapter.ClearBeforeFill = True
         '
-        'MealDataGridViewTextBoxColumn2
+        'DiaryBindingSource2
         '
-        Me.MealDataGridViewTextBoxColumn2.DataPropertyName = "Meal"
-        Me.MealDataGridViewTextBoxColumn2.HeaderText = "Meal"
-        Me.MealDataGridViewTextBoxColumn2.Name = "MealDataGridViewTextBoxColumn2"
-        Me.MealDataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DiaryBindingSource2.DataSource = Me.Diary
+        Me.DiaryBindingSource2.Position = 0
         '
-        'EntryDataGridViewTextBoxColumn2
+        'lblUser
         '
-        Me.EntryDataGridViewTextBoxColumn2.DataPropertyName = "Entry"
-        Me.EntryDataGridViewTextBoxColumn2.HeaderText = "Entry"
-        Me.EntryDataGridViewTextBoxColumn2.Name = "EntryDataGridViewTextBoxColumn2"
-        Me.EntryDataGridViewTextBoxColumn2.ReadOnly = True
-        '
-        'DateDataGridViewTextBoxColumn2
-        '
-        Me.DateDataGridViewTextBoxColumn2.DataPropertyName = "Date"
-        Me.DateDataGridViewTextBoxColumn2.HeaderText = "Date"
-        Me.DateDataGridViewTextBoxColumn2.Name = "DateDataGridViewTextBoxColumn2"
-        Me.DateDataGridViewTextBoxColumn2.ReadOnly = True
-        '
-        'UserDataGridViewTextBoxColumn3
-        '
-        Me.UserDataGridViewTextBoxColumn3.DataPropertyName = "User"
-        Me.UserDataGridViewTextBoxColumn3.HeaderText = "User"
-        Me.UserDataGridViewTextBoxColumn3.Name = "UserDataGridViewTextBoxColumn3"
-        Me.UserDataGridViewTextBoxColumn3.ReadOnly = True
-        '
-        'MealDataGridViewTextBoxColumn3
-        '
-        Me.MealDataGridViewTextBoxColumn3.DataPropertyName = "Meal"
-        Me.MealDataGridViewTextBoxColumn3.HeaderText = "Meal"
-        Me.MealDataGridViewTextBoxColumn3.Name = "MealDataGridViewTextBoxColumn3"
-        Me.MealDataGridViewTextBoxColumn3.ReadOnly = True
-        '
-        'EntryDataGridViewTextBoxColumn3
-        '
-        Me.EntryDataGridViewTextBoxColumn3.DataPropertyName = "Entry"
-        Me.EntryDataGridViewTextBoxColumn3.HeaderText = "Entry"
-        Me.EntryDataGridViewTextBoxColumn3.Name = "EntryDataGridViewTextBoxColumn3"
-        Me.EntryDataGridViewTextBoxColumn3.ReadOnly = True
-        '
-        'DateDataGridViewTextBoxColumn3
-        '
-        Me.DateDataGridViewTextBoxColumn3.DataPropertyName = "Date"
-        Me.DateDataGridViewTextBoxColumn3.HeaderText = "Date"
-        Me.DateDataGridViewTextBoxColumn3.Name = "DateDataGridViewTextBoxColumn3"
-        Me.DateDataGridViewTextBoxColumn3.ReadOnly = True
+        Me.lblUser.Location = New System.Drawing.Point(262, 32)
+        Me.lblUser.Name = "lblUser"
+        Me.lblUser.Size = New System.Drawing.Size(100, 23)
+        Me.lblUser.TabIndex = 16
         '
         'frmDiary
         '
@@ -350,47 +267,37 @@ Partial Class frmDiary
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange
-        Me.ClientSize = New System.Drawing.Size(497, 354)
+        Me.ClientSize = New System.Drawing.Size(672, 361)
+        Me.Controls.Add(Me.lblUser)
+        Me.Controls.Add(Me.btnViewAll)
+        Me.Controls.Add(Me.gbViewMeal)
+        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.dtpDate)
         Me.Controls.Add(Me.lblName)
         Me.Controls.Add(Me.btnClose)
-        Me.Controls.Add(Me.lblDinner)
-        Me.Controls.Add(Me.dgvDinner)
-        Me.Controls.Add(Me.lblSnack)
-        Me.Controls.Add(Me.dgvSnack)
-        Me.Controls.Add(Me.lblLunch)
-        Me.Controls.Add(Me.dgvLunch)
-        Me.Controls.Add(Me.lblBreakfast)
-        Me.Controls.Add(Me.dgvBreakfast)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Name = "frmDiary"
         Me.Text = "Diary"
-        CType(Me.dgvBreakfast, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DiaryBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        CType(Me.dgvLunch, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvSnack, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvDinner, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DiaryBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DiaryBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LunchDiaryBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbViewMeal.ResumeLayout(False)
+        Me.gbViewMeal.PerformLayout()
+        CType(Me.DiaryBindingSource5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Diary, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DiaryBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DiaryBindingSource4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DiaryBindingSource3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DiaryBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents dgvBreakfast As DataGridView
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents lblBreakfast As Label
-    Friend WithEvents lblLunch As Label
-    Friend WithEvents dgvLunch As DataGridView
-    Friend WithEvents lblSnack As Label
-    Friend WithEvents dgvSnack As DataGridView
-    Friend WithEvents lblDinner As Label
-    Friend WithEvents dgvDinner As DataGridView
     Friend WithEvents btnClose As Button
     Friend WithEvents lblName As Label
     Friend WithEvents dtpDate As DateTimePicker
@@ -399,21 +306,21 @@ Partial Class frmDiary
     Friend WithEvents DiaryBindingSource1 As BindingSource
     Friend WithEvents DiaryBindingSource2 As BindingSource
     Friend WithEvents Diary As Diary
+    Friend WithEvents DiaryBindingSource3 As BindingSource
+    Friend WithEvents DiaryBindingSource4 As BindingSource
+    Friend WithEvents DiaryBindingSource5 As BindingSource
+    Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents UserDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents MealDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents EntryDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CaloriesDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DateDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents DiaryBindingSource3 As BindingSource
-    Friend WithEvents UserDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents MealDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents EntryDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DateDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents UserDataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents MealDataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents EntryDataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DateDataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents UserDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents MealDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents EntryDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DateDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents LunchDiaryBindingSource As BindingSource
+    Friend WithEvents radSnack As RadioButton
+    Friend WithEvents radDinner As RadioButton
+    Friend WithEvents radLunch As RadioButton
+    Friend WithEvents radBreakfast As RadioButton
+    Friend WithEvents gbViewMeal As GroupBox
+    Friend WithEvents btnViewAll As Button
+    Friend WithEvents lblUser As Label
 End Class

@@ -3,98 +3,45 @@ Public Class frmDiary
     Dim comm As New SqlCommand
     Dim connection As String = "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Users.mdf;Integrated Security=True"
     Dim myConn As New SqlConnection(connection)
-    Dim selectedDate As DateTime = dtpDate.Value.ToShortDateString
+    Dim selectedDate As DateTime
+    Dim tableAdapter As New DiaryTableAdapters.DiaryTableAdapter()
 
     Private Sub UserDiary_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        lblName.Text = frmLogin.Username
+        lblUser.Text = frmLogin.Username
         dtpDate.Value = DateTime.Now.ToShortDateString
-        FillBreakfast()
-        FillLunch()
-        FillDinner()
-        FillSnack()
-
+        Dim selectedDate As DateTime = dtpDate.Value
+        tableAdapter.showAll(Diary._Diary, frmLogin.Username)
     End Sub
-    Private Sub FillBreakfast()
-
-        Dim query As String = "SELECT [User], Meal, Entry, Date FROM Diary
-                               WHERE (Meal = @Meal) AND (USER = @User) AND (Date =@Date)"
-        Try
-            With comm
-                .Connection = myConn
-                .CommandType = CommandType.Text
-                .CommandText = query
-                .Parameters.AddWithValue("@Meal", "Breakfast")
-                .Parameters.AddWithValue("@User", frmLogin.Username)
-                .Parameters.AddWithValue("@Date", selectedDate)
-
-            End With
-
-        Catch ex As Exception
-            MessageBox.Show(ex.InnerException.Message)
-        End Try
+    Private Sub FillDiary()
+        If radBreakfast.Checked Then
+            tableAdapter.FillByMeal(Diary._Diary, frmLogin.Username, "Breakfast", dtpDate.Value)
+        ElseIf radLunch.Checked Then
+            tableAdapter.FillByMeal(Diary._Diary, frmLogin.Username, "Lunch", dtpDate.Value)
+        ElseIf radDinner.Checked Then
+            tableAdapter.FillByMeal(Diary._Diary, frmLogin.Username, "Dinner", dtpDate.Value)
+        Else
+            tableAdapter.FillByMeal(Diary._Diary, frmLogin.Username, "Snack", dtpDate.Value)
+        End If
     End Sub
 
-    Private Sub FillLunch()
-        Dim query As String = "SELECT [User], Meal, Entry, Date FROM Diary
-                               WHERE (Meal = @Meal) AND (USER = @User) AND (Date =@Date)"
+    Private Sub btnViewAll_Click(sender As Object, e As EventArgs) Handles btnViewAll.Click
+
+        For Each ctrl As Control In gbViewMeal.Controls
+            If TypeOf ctrl Is RadioButton Then
+                DirectCast(ctrl, RadioButton).Checked = False
+            End If
+        Next
+
         Try
-            With comm
-                .Connection = myConn
-                .CommandType = CommandType.Text
-                .CommandText = query
-                .Parameters.AddWithValue("@Meal", "Lunch")
-                .Parameters.AddWithValue("@User", frmLogin.Username)
-                .Parameters.AddWithValue("@Date", selectedDate)
-
-            End With
-
+            tableAdapter.showAll(Diary._Diary, frmLogin.Username)
         Catch ex As Exception
-            MessageBox.Show(ex.InnerException.Message)
+            MessageBox.Show(ex.Message)
         End Try
 
     End Sub
 
-    Private Sub FillDinner()
-        Dim query As String = "SELECT [User], Meal, Entry, Date FROM Diary
-                               WHERE (Meal = @Meal) AND (USER = @User) AND (Date =@Date)"
-        Try
-            With comm
-                .Connection = myConn
-                .CommandType = CommandType.Text
-                .CommandText = query
-                .Parameters.AddWithValue("@Meal", "Dinner")
-                .Parameters.AddWithValue("@User", frmLogin.Username)
-                .Parameters.AddWithValue("@Date", selectedDate)
-
-            End With
-
-        Catch ex As Exception
-            MessageBox.Show(ex.InnerException.Message)
-        End Try
-
-    End Sub
-
-    Private Sub FillSnack()
-        Dim query As String = "SELECT [User], Meal, Entry, Date FROM Diary
-                               WHERE (Meal = @Meal) AND (USER = @User) AND (Date =@Date)"
-        Try
-            With comm
-                .Connection = myConn
-                .CommandType = CommandType.Text
-                .CommandText = query
-                .Parameters.AddWithValue("@Meal", "Snack")
-                .Parameters.AddWithValue("@User", frmLogin.Username)
-                .Parameters.AddWithValue("@Date", selectedDate)
-
-            End With
-
-        Catch ex As Exception
-            MessageBox.Show(ex.InnerException.Message)
-        End Try
-
-    End Sub
-    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
-        Me.Close()
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        FillDiary()
     End Sub
 End Class

@@ -289,6 +289,8 @@ Partial Public Class Diary
         
         Private columnEntry As Global.System.Data.DataColumn
         
+        Private columnCalories As Global.System.Data.DataColumn
+        
         Private columnDate As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -352,6 +354,14 @@ Partial Public Class Diary
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property CaloriesColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCalories
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property DateColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnDate
@@ -395,18 +405,12 @@ Partial Public Class Diary
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddDiaryRow(ByVal User As String, ByVal Meal As String, ByVal Entry As String, ByVal _Date As Date) As DiaryRow
+        Public Overloads Function AddDiaryRow(ByVal User As String, ByVal Meal As String, ByVal Entry As String, ByVal Calories As String, ByVal _Date As Date) As DiaryRow
             Dim rowDiaryRow As DiaryRow = CType(Me.NewRow,DiaryRow)
-            Dim columnValuesArray() As Object = New Object() {User, Meal, Entry, _Date}
+            Dim columnValuesArray() As Object = New Object() {User, Meal, Entry, Calories, _Date}
             rowDiaryRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowDiaryRow)
             Return rowDiaryRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function FindByUser(ByVal User As String) As DiaryRow
-            Return CType(Me.Rows.Find(New Object() {User}),DiaryRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -429,6 +433,7 @@ Partial Public Class Diary
             Me.columnUser = MyBase.Columns("User")
             Me.columnMeal = MyBase.Columns("Meal")
             Me.columnEntry = MyBase.Columns("Entry")
+            Me.columnCalories = MyBase.Columns("Calories")
             Me.columnDate = MyBase.Columns("Date")
         End Sub
         
@@ -441,20 +446,17 @@ Partial Public Class Diary
             MyBase.Columns.Add(Me.columnMeal)
             Me.columnEntry = New Global.System.Data.DataColumn("Entry", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnEntry)
+            Me.columnCalories = New Global.System.Data.DataColumn("Calories", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCalories)
             Me.columnDate = New Global.System.Data.DataColumn("Date", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             Me.columnDate.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "DateColumn")
             Me.columnDate.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnDate")
             Me.columnDate.ExtendedProperties.Add("Generator_UserColumnName", "Date")
             MyBase.Columns.Add(Me.columnDate)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnUser}, true))
-            Me.columnUser.AllowDBNull = false
-            Me.columnUser.Unique = true
             Me.columnUser.MaxLength = 50
-            Me.columnMeal.AllowDBNull = false
             Me.columnMeal.MaxLength = 50
-            Me.columnEntry.AllowDBNull = false
             Me.columnEntry.MaxLength = 50
-            Me.columnDate.AllowDBNull = false
+            Me.columnCalories.MaxLength = 50
             Me.ExtendedProperties.Add("Generator_TablePropName", "_Diary")
             Me.ExtendedProperties.Add("Generator_UserTableName", "Diary")
         End Sub
@@ -605,7 +607,11 @@ Partial Public Class Diary
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property User() As String
             Get
-                Return CType(Me(Me.tableDiary.UserColumn),String)
+                Try 
+                    Return CType(Me(Me.tableDiary.UserColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'User' in table 'Diary' is DBNull.", e)
+                End Try
             End Get
             Set
                 Me(Me.tableDiary.UserColumn) = value
@@ -616,7 +622,11 @@ Partial Public Class Diary
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property Meal() As String
             Get
-                Return CType(Me(Me.tableDiary.MealColumn),String)
+                Try 
+                    Return CType(Me(Me.tableDiary.MealColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Meal' in table 'Diary' is DBNull.", e)
+                End Try
             End Get
             Set
                 Me(Me.tableDiary.MealColumn) = value
@@ -627,7 +637,11 @@ Partial Public Class Diary
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property Entry() As String
             Get
-                Return CType(Me(Me.tableDiary.EntryColumn),String)
+                Try 
+                    Return CType(Me(Me.tableDiary.EntryColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Entry' in table 'Diary' is DBNull.", e)
+                End Try
             End Get
             Set
                 Me(Me.tableDiary.EntryColumn) = value
@@ -636,14 +650,93 @@ Partial Public Class Diary
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Calories() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDiary.CaloriesColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Calories' in table 'Diary' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDiary.CaloriesColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property _Date() As Date
             Get
-                Return CType(Me(Me.tableDiary.DateColumn),Date)
+                Try 
+                    Return CType(Me(Me.tableDiary.DateColumn),Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Date' in table 'Diary' is DBNull.", e)
+                End Try
             End Get
             Set
                 Me(Me.tableDiary.DateColumn) = value
             End Set
         End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsUserNull() As Boolean
+            Return Me.IsNull(Me.tableDiary.UserColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetUserNull()
+            Me(Me.tableDiary.UserColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsMealNull() As Boolean
+            Return Me.IsNull(Me.tableDiary.MealColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetMealNull()
+            Me(Me.tableDiary.MealColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsEntryNull() As Boolean
+            Return Me.IsNull(Me.tableDiary.EntryColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetEntryNull()
+            Me(Me.tableDiary.EntryColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsCaloriesNull() As Boolean
+            Return Me.IsNull(Me.tableDiary.CaloriesColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetCaloriesNull()
+            Me(Me.tableDiary.CaloriesColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Is_DateNull() As Boolean
+            Return Me.IsNull(Me.tableDiary.DateColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Set_DateNull()
+            Me(Me.tableDiary.DateColumn) = Global.System.Convert.DBNull
+        End Sub
     End Class
     
     '''<summary>
@@ -815,42 +908,19 @@ Namespace DiaryTableAdapters
             tableMapping.ColumnMappings.Add("User", "User")
             tableMapping.ColumnMappings.Add("Meal", "Meal")
             tableMapping.ColumnMappings.Add("Entry", "Entry")
+            tableMapping.ColumnMappings.Add("Calories", "Calories")
             tableMapping.ColumnMappings.Add("Date", "Date")
             Me._adapter.TableMappings.Add(tableMapping)
-            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Diary] WHERE (([User] = @Original_User) AND ([Meal] = @Origina"& _ 
-                "l_Meal) AND ([Entry] = @Original_Entry) AND ([Date] = @Original_Date))"
-            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_User", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Meal", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Meal", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Entry", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Entry", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Date", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Date", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Diary] ([User], [Meal], [Entry], [Date]) VALUES (@User, @Meal,"& _ 
-                " @Entry, @Date);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT [User], Meal, Entry, Date FROM Diary WHERE ([User] = @U"& _ 
-                "ser)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Diary] ([User], [Meal], [Entry], [Calories], [Date]) VALUES (@User, "& _ 
+                "@Meal, @Entry, @Calories, @Date)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Meal", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Meal", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Entry", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Entry", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Calories", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Calories", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Date", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Date", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
-            Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Diary] SET [User] = @User, [Meal] = @Meal, [Entry] = @Entry, [Date]"& _ 
-                " = @Date WHERE (([User] = @Original_User) AND ([Meal] = @Original_Meal) AND ([En"& _ 
-                "try] = @Original_Entry) AND ([Date] = @Original_Date));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT [User], Meal, En"& _ 
-                "try, Date FROM Diary WHERE ([User] = @User)"
-            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Meal", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Meal", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Entry", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Entry", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Date", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Date", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_User", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "User", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Meal", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Meal", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Entry", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Entry", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Date", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Date", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -863,37 +933,51 @@ Namespace DiaryTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(3) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT [User], Meal, Entry, Date FROM dbo.Diary"
+            Me._commandCollection(0).CommandText = "SELECT        [User], Meal, Entry, Calories, Date"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Diary"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  "& _ 
+                "      ([User] = @User)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "User", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "INSERT INTO [dbo].[Diary] ([User], [Meal], [Entry], [Date]) VALUES (@User, @Meal,"& _ 
-                " @Entry, @Date);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT [User], Meal, Entry, Date FROM Diary WHERE ([User] = @U"& _ 
-                "ser)"
+            Me._commandCollection(1).CommandText = "INSERT INTO [Diary] ([User], [Meal], [Entry], [Calories], [Date]) VALUES (@User, "& _ 
+                "@Meal, @Entry, @Calories, @Date)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "User", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Meal", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Meal", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Entry", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Entry", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Calories", Global.System.Data.SqlDbType.VarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Calories", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Date", Global.System.Data.SqlDbType.[Date], 3, Global.System.Data.ParameterDirection.Input, 0, 0, "Date", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT        [User], Meal, Entry, Date"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Diary"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Mea"& _ 
-                "l = @Meal) AND (USER = @User) AND (Date =@Date)"
+            Me._commandCollection(2).CommandText = "SELECT        SUM(Calories) AS Expr1"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Diary"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ([User]"& _ 
+                " = @User) AND (Date = @Date)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Meal", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Meal", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User", Global.System.Data.SqlDbType.VarChar, 1024, Global.System.Data.ParameterDirection.Input, 0, 0, "", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "User", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Date", Global.System.Data.SqlDbType.[Date], 3, Global.System.Data.ParameterDirection.Input, 0, 0, "Date", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(3).Connection = Me.Connection
+            Me._commandCollection(3).CommandText = "SELECT        [User], Meal, Entry, Calories, Date"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Diary"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  "& _ 
+                "      ([User] = @User) AND (Meal = @Meal) AND (Date = @Date)"
+            Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@User", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "User", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Meal", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Meal", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(3).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Date", Global.System.Data.SqlDbType.[Date], 3, Global.System.Data.ParameterDirection.Input, 0, 0, "Date", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As Diary.DiaryDataTable) As Integer
+        Public Overloads Overridable Function showAll(ByVal dataTable As Diary.DiaryDataTable, ByVal User As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (User Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(User,String)
+            End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -904,32 +988,21 @@ Namespace DiaryTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As Diary.DiaryDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As Diary.DiaryDataTable = New Diary.DiaryDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillDiary(ByVal dataTable As Diary.DiaryDataTable, ByVal Meal As String, ByVal User As String, ByVal _Date As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(2)
-            If (Meal Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Meal")
-            Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Meal,String)
-            End If
+        Public Overloads Overridable Function FillByMeal(ByVal dataTable As Diary.DiaryDataTable, ByVal User As String, ByVal Meal As String, ByVal _Date As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (User Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("User")
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(User,String)
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(User,String)
+            End If
+            If (Meal Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Meal,String)
             End If
             If (_Date Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("_Date")
+                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.SelectCommand.Parameters(2).Value = CType(_Date,String)
             End If
@@ -971,160 +1044,33 @@ Namespace DiaryTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_User As String, ByVal Original_Meal As String, ByVal Original_Entry As String, ByVal Original_Date As Date) As Integer
-            If (Original_User Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_User")
-            Else
-                Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_User,String)
-            End If
-            If (Original_Meal Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Meal")
-            Else
-                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_Meal,String)
-            End If
-            If (Original_Entry Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Entry")
-            Else
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_Entry,String)
-            End If
-            Me.Adapter.DeleteCommand.Parameters(3).Value = CType(Original_Date,Date)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
-            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.DeleteCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.DeleteCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal User As String, ByVal Meal As String, ByVal Entry As String, ByVal _Date As Date) As Integer
-            If (User Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("User")
-            Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(User,String)
-            End If
-            If (Meal Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Meal")
-            Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(Meal,String)
-            End If
-            If (Entry Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Entry")
-            Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(Entry,String)
-            End If
-            Me.Adapter.InsertCommand.Parameters(3).Value = CType(_Date,Date)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
-            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.InsertCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.InsertCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal User As String, ByVal Meal As String, ByVal Entry As String, ByVal _Date As Date, ByVal Original_User As String, ByVal Original_Meal As String, ByVal Original_Entry As String, ByVal Original_Date As Date) As Integer
-            If (User Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("User")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(User,String)
-            End If
-            If (Meal Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Meal")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Meal,String)
-            End If
-            If (Entry Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Entry")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Entry,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(_Date,Date)
-            If (Original_User Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_User")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_User,String)
-            End If
-            If (Original_Meal Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Meal")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_Meal,String)
-            End If
-            If (Original_Entry Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Original_Entry")
-            Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_Entry,String)
-            End If
-            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_Date,Date)
-            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
-            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
-                        <> Global.System.Data.ConnectionState.Open) Then
-                Me.Adapter.UpdateCommand.Connection.Open
-            End If
-            Try 
-                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
-                Return returnValue
-            Finally
-                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
-                    Me.Adapter.UpdateCommand.Connection.Close
-                End If
-            End Try
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal Meal As String, ByVal Entry As String, ByVal _Date As Date, ByVal Original_User As String, ByVal Original_Meal As String, ByVal Original_Entry As String, ByVal Original_Date As Date) As Integer
-            Return Me.Update(Original_User, Meal, Entry, _Date, Original_User, Original_Meal, Original_Entry, Original_Date)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
-        Public Overloads Overridable Function AddEntry(ByVal User As String, ByVal Meal As String, ByVal Entry As String, ByVal _Date As String) As Integer
+        Public Overloads Overridable Function AddEntry(ByVal User As String, ByVal Meal As String, ByVal Entry As String, ByVal Calories As String, ByVal _Date As String) As Integer
             Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
             If (User Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("User")
+                command.Parameters(0).Value = Global.System.DBNull.Value
             Else
                 command.Parameters(0).Value = CType(User,String)
             End If
             If (Meal Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Meal")
+                command.Parameters(1).Value = Global.System.DBNull.Value
             Else
                 command.Parameters(1).Value = CType(Meal,String)
             End If
             If (Entry Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("Entry")
+                command.Parameters(2).Value = Global.System.DBNull.Value
             Else
                 command.Parameters(2).Value = CType(Entry,String)
             End If
-            If (_Date Is Nothing) Then
-                Throw New Global.System.ArgumentNullException("_Date")
+            If (Calories Is Nothing) Then
+                command.Parameters(3).Value = Global.System.DBNull.Value
             Else
-                command.Parameters(3).Value = CType(_Date,String)
+                command.Parameters(3).Value = CType(Calories,String)
+            End If
+            If (_Date Is Nothing) Then
+                command.Parameters(4).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(4).Value = CType(_Date,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
             If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -1140,6 +1086,42 @@ Namespace DiaryTableAdapters
                 End If
             End Try
             Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function CalorieCount(ByVal User As String, ByVal _Date As String) As Global.System.Nullable(Of Integer)
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(2)
+            If (User Is Nothing) Then
+                command.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(0).Value = CType(User,String)
+            End If
+            If (_Date Is Nothing) Then
+                command.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                command.Parameters(1).Value = CType(_Date,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Object
+            Try 
+                returnValue = command.ExecuteScalar
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
+            If ((returnValue Is Nothing)  _
+                        OrElse (returnValue.GetType Is GetType(Global.System.DBNull))) Then
+                Return New Global.System.Nullable(Of Integer)()
+            Else
+                Return New Global.System.Nullable(Of Integer)(CType(returnValue,Integer))
+            End If
         End Function
     End Class
     

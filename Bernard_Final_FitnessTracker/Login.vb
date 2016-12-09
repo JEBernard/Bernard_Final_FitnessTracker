@@ -41,7 +41,7 @@ WHERE UserName = @UserName AND  Password = @Password"
 
                 frmProfile.ShowDialog()
 
-                Me.Close()
+
             Else
                 MessageBox.Show("Invalid Username/Password")
                 myConn.Close()
@@ -71,6 +71,9 @@ VALUES        (@UserName,@Password)"
             myConn.Open()
             comm.ExecuteNonQuery()
             MessageBox.Show("New user: " & strName & " has been registered")
+            Username = strName
+            frmEdit.Show()
+
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
